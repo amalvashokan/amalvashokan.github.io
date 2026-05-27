@@ -1,13 +1,13 @@
 # 🌐 Amal V A | Enterprise Network Engineer
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/type=waving&color=0078D4&height=150&section=header&text=Connect!&fontSize=40&fontColor=ffffff" alt="Connect Banner" />
-</p>
+<div align="center">
+  
+  ## ⚡ WELCOME TO MY NETWORK INFRASTRUCTURE REPOSITORY ⚡
+  
+  <a href="https://amalvashokan99.github.io"><img src="https://img.shields.io/badge/PORTFOLIO-AMALVASHOKAN99.GITHUB.IO-0078D4?style=for-the-badge&logo=microsoft-edge&logoColor=white" alt="Portfolio"></a>
+  <a href="https://www.linkedin.com/in/amalva/"><img src="https://img.shields.io/badge/LINKEDIN-AMAL%20V%20A-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
 
-<p align="center">
-  <a href="https://amalvashokan99.github.io"><img src="https://img.shields.io/badge/Portfolio-amalvashokan99.github.io-0078D4?style=for-the-badge&logo=microsoft-edge&logoColor=white" alt="Portfolio"></a>
-  <a href="https://www.linkedin.com/in/amalva/"><img src="https://img.shields.io/badge/LinkedIn-Amal%20V%20A-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-</p>
+</div>
 
 ---
 
@@ -56,7 +56,4 @@ I am always open to discussing enterprise infrastructure scaling, network archit
 
 * **Portfolio Website:** [amalvashokan99.github.io](https://amalvashokan99.github.io)
 * **Professional Networking:** [LinkedIn Profile](https://www.linkedin.com/in/amalva/)
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/type=waving&color=0078D4&height=100&section=footer" alt="Footer Banner" />
-</p>
+* 
