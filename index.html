@@ -293,8 +293,9 @@
         {
           title: "Cisco Certified Network Associate (CCNA)",
           institution: "Etherlabs",
-          location: "Thrissur, Kerala, India",
-          year: "Class of 2025",
+          location: "Thrissur, Kerala",
+          year: "2025",
+          credentialId: "CSCO15297584",
           type: "Certification"
         },
         {
@@ -558,7 +559,7 @@
 
                 <div className="space-y-4">
                   {educationData.map((edu, idx) => {
-                    const isMatch = matchesSearch(edu.title) || matchesSearch(edu.institution);
+                    const isMatch = matchesSearch(edu.title) || matchesSearch(edu.institution) || matchesSearch(edu.credentialId || '');
                     return (
                       <div 
                         key={idx} 
@@ -569,7 +570,14 @@
                         </div>
                         <div className="flex-1">
                           <div className="flex items-baseline justify-between gap-2 flex-wrap">
-                            <h4 className="text-xs font-bold text-white">{edu.title}</h4>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <h4 className="text-xs font-bold text-white">{edu.title}</h4>
+                              {edu.credentialId && (
+                                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900 border border-zinc-700 text-emerald-400 font-semibold tracking-wider">
+                                  ID: {edu.credentialId}
+                                </span>
+                              )}
+                            </div>
                             <span className="text-[10px] font-mono text-zinc-500">{edu.year}</span>
                           </div>
                           <p className="text-[11px] text-zinc-400 font-mono mt-0.5">{edu.institution} — <span className="italic">{edu.location}</span></p>
