@@ -6,11 +6,6 @@
   <meta name="description" content="Amal V A - Network Engineer CV & Portfolio. CCNA certified professional specialized in enterprise routing, switching, Cisco hardware, and structured cabling infrastructure.">
   <title>Amal V A - Network Engineer</title>
   
-  <!-- Google Fonts: Space Grotesk (Distinct Tech Sans) & JetBrains Mono (Developer Monospace) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -18,10 +13,6 @@
       darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          },
           colors: {
             brand: {
               black: '#000000',
@@ -38,16 +29,6 @@
   
   <!-- CSS Animations & Global Styles -->
   <style>
-    body {
-      font-family: 'Space Grotesk', -apple-system, sans-serif;
-    }
-    h1, h2, h3, h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: -0.02em;
-    }
-    code, pre, .font-mono {
-      font-family: 'JetBrains Mono', monospace !important;
-    }
     @keyframes slideUp {
       from { transform: translateY(1rem); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -76,7 +57,7 @@
     }
   </style>
 </head>
-<body class="bg-black text-zinc-100 font-sans selection:bg-zinc-800 selection:text-white min-h-screen transition-colors duration-300">
+<body class="bg-black text-zinc-100 selection:bg-zinc-800 selection:text-white min-h-screen transition-colors duration-300">
   
   <div id="root"></div>
 
@@ -323,10 +304,10 @@
       useEffect(() => {
         if (isDarkMode) {
           document.documentElement.classList.add('dark');
-          document.body.className = "bg-black text-zinc-100 font-sans selection:bg-zinc-800 selection:text-white min-h-screen transition-colors duration-300";
+          document.body.className = "bg-black text-zinc-100 selection:bg-zinc-800 selection:text-white min-h-screen transition-colors duration-300";
         } else {
           document.documentElement.classList.remove('dark');
-          document.body.className = "bg-slate-50 text-slate-800 font-sans selection:bg-slate-200 min-h-screen transition-colors duration-300";
+          document.body.className = "bg-slate-50 text-slate-800 selection:bg-slate-200 min-h-screen transition-colors duration-300";
         }
       }, [isDarkMode]);
 
