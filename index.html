@@ -596,7 +596,13 @@
         repo: "github.com/amalvashokan/portfolio",
         repoUrl: "https://github.com/amalvashokan/portfolio",
         whatsappUrl: "https://wa.me/917034859119?text=Hi%20Amal,%20I%20reviewed%20your%20network%20engineering%20portfolio",
-        summary: "CCNA-certified Network Engineer with hands-on experience in enterprise routing, switching, hardware diagnostics, and cabling infrastructure. Proven background in configuring network devices, deploying surveillance security systems, and troubleshooting Layer 1–3 network issues. Skilled in optimizing network uptime and maintaining standardized IT infrastructure."
+        aboutHeadline: "Bridging Physical Infrastructure with Enterprise Network Reliability",
+        aboutParagraphs: [
+          "I am a CCNA-certified Network Engineer driven by a clear philosophy: a dependable enterprise network starts with disciplined physical-layer craftsmanship and stays resilient through hardened Layer 2 and Layer 3 design. In modern enterprise environments, silent network bottlenecks and vulnerabilities often trace back to poorly organized rack layouts, unsegmented broadcast traffic, or overlooked edge security. My career objective is to eliminate those vulnerabilities from the start, delivering predictable uptime, clean documentation, and deterministic data flow.",
+          "My technical foundation is backed by formal credentialing and interdisciplinary education. I hold the globally recognized Cisco Certified Network Associate credential (CCNA, Verification ID: CSC015297584), complemented by a Diploma in Computer Hardware and Network Engineering (DHNE) from Kerala State Rutronix, alongside a Bachelor of Commerce (B.Com) from the University of Calicut. This diverse academic and technical grounding equips me with both the engineering rigor required for complex network architectures and an appreciation for business operational requirements.",
+          "My hands-on experience unites physical field infrastructure with deep command-line routing and switching execution. Across my engineering tenures at IGate Networks and Etherlabs, I have worked directly across the physical rack and logical layers. In the field, I assembled and terminated structured Cat6 cabling across 24/48-port patch panels, provisioned server racks, assembled client workstation hardware, and installed commercial multi-channel IP and analog CCTV surveillance systems. On the switching and routing front, I configured and tested multi-tier topologies on physical Cisco ISR 2900-series routers and Catalyst switches. This included engineering dynamic routing schemes using OSPF, EIGRP, and RIP, enforcing 802.1Q Inter-VLAN traffic segmentation, writing granular Access Control Lists, and locking down switch interfaces with Port Security.",
+          "Looking ahead, my vision within the networking domain centers on zero-ambiguity infrastructure and defense-by-default architecture. As campus networks grow in complexity, network engineers must bridge physical hardware reliability with disciplined virtual segmentation and proactive CLI-driven troubleshooting. I believe in rigorously proving every topology in GNS3 and Cisco Packet Tracer environments before touching production hardware, ensuring changes are verified, documented, and resilient. I am actively seeking an enterprise Network Engineer or Infrastructure Support placement where I can apply these standards, safeguard business-critical systems, and maintain continuous network uptime."
+        ]
       };
 
       // EXACT CV DATA: Professional Experience (Etherlabs & IGate Networks)
@@ -933,9 +939,17 @@
                   </div>
                 </div>
 
-                <p className="text-xs leading-relaxed text-slate-700 dark:text-zinc-300">
-                  {profileData.summary}
-                </p>
+                <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-zinc-800/80">
+                  <h2 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                    {profileData.aboutHeadline}
+                  </h2>
+                  <div className="space-y-3.5 text-xs leading-relaxed text-slate-700 dark:text-zinc-300">
+                    {profileData.aboutParagraphs.map((para, idx) => (
+                      <p key={idx}>{para}</p>
+                    ))}
+                  </div>
+                </div>
               </AntigravityTiltCard>
 
               {/* LAYER 02: PROFESSIONAL EXPERIENCE */}
