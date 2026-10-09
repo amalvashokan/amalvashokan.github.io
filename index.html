@@ -1252,231 +1252,50 @@
                 </div>
               </div>
 
-              {/* Subheading & Incident Overview with BSOD Photo */}
-              <div className="mb-6 space-y-3">
-                <h4 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-white">
-                  Component-Level Troubleshooting, BSOD Analysis, and Storage Media Remediation
-                </h4>
-
-                {/* Hero Feature: BSOD Incident Log Card */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center p-4 rounded-xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200/80 dark:border-zinc-800">
-                  <div className="md:col-span-8 space-y-2 text-xs sm:text-[13px] leading-relaxed text-slate-700 dark:text-zinc-300">
-                    <p className="font-semibold text-slate-800 dark:text-zinc-200 flex items-center gap-1.5">
-                      <svg className="w-4 h-4 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                      </svg>
-                      Incident Breakdown:
-                    </p>
-                    <p>
-                      Diagnosed and remediated critical workstation instability and boot failures involving recurring Blue Screen of Death (BSOD) stop-code crashes (including device driver execution halts: <code className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 font-mono text-[11px] text-blue-600 dark:text-blue-400 font-bold">THREAD_STUCK_IN_DEVICE_DRIVER</code>) and persistent boot recovery loops across enterprise client hardware. Conducted systematic hardware teardowns on compact OEM systems and custom tower rigs, verifying power distribution, thermal paste integrity, and fan blower assembly before isolating component faults.
-                    </p>
-                  </div>
-                  <div 
-                    onClick={() => setSelectedFieldPhoto(hardwareGallery[0])}
-                    className="md:col-span-4 group relative rounded-xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-blue-500/60 shadow-sm"
-                    title="Click to inspect BSOD telemetry"
-                  >
-                    <img 
-                      src="hardware-bsod-thread-stuck.jpg" 
-                      alt="Windows BSOD Stop Code THREAD_STUCK_IN_DEVICE_DRIVER" 
-                      className="w-full h-32 object-cover object-center group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
-                      <span className="text-[10px] font-mono text-white font-medium flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-                        BSOD Telemetry Capture
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Detailed Narrative */}
-              <div className="space-y-4 mb-6">
-                <div className="space-y-3.5 text-xs sm:text-[13px] leading-relaxed text-slate-700 dark:text-zinc-300">
-                  <p>
-                    Identified failing mechanical storage drives as the primary cause of system freezing and I/O bottlenecks, executing successful data migration prior to provisioning high-speed SSD drives and re-seating dual-channel memory modules. Configured clean OS environments, updated firmware/chipset drivers to eliminate thread lockups, and performed stress-load burn-in testing to guarantee thermal stability, error-free POST execution, and long-term operating system reliability.
+              {/* PC ASSEMBLY & HARDWARE DIAGNOSTICS: 4 CORE COMPETENCIES */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                {/* Custom PC & OEM Systems Assembly */}
+                <div className="p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200/80 dark:border-zinc-800 space-y-2 hover:border-blue-500/40 transition-colors">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                    Custom PC & OEM Systems Assembly
+                  </h4>
+                  <p className="text-xs sm:text-[13px] leading-relaxed text-slate-600 dark:text-zinc-300">
+                    Built custom desktop towers and serviced OEM small-form-factor PCs, installing motherboards, Cooler Master power supplies, dual-channel RAM, and storage drives.
                   </p>
                 </div>
-              </div>
 
-              {/* PC ASSEMBLY & HARDWARE DIAGNOSTICS: CORE COMPETENCY BREAKDOWN */}
-              <div className="space-y-3 mb-6">
-                <h5 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-bold flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-                  PC Assembly & Hardware Diagnostics Competencies:
-                </h5>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  {/* Point 1: Custom PC & OEM Systems Assembly */}
-                  <div className="p-4 rounded-xl bg-slate-50/90 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-zinc-800 space-y-1.5 transition-all hover:border-blue-500/40">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
-                        Custom PC & OEM Systems Assembly
-                      </h6>
-                    </div>
-                    <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-300">
-                      Built custom desktop towers and serviced OEM small-form-factor PCs, installing motherboards, Cooler Master power supplies, dual-channel RAM, and storage drives.
-                    </p>
-                  </div>
-
-                  {/* Point 2: System Configuration & Cable Routing */}
-                  <div className="p-4 rounded-xl bg-slate-50/90 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-zinc-800 space-y-1.5 transition-all hover:border-blue-500/40">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
-                        System Configuration & Cable Routing
-                      </h6>
-                    </div>
-                    <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-300">
-                      Configured BIOS/UEFI firmware, completed clean OS deployments, and routed internal wiring to maintain optimal chassis airflow and thermal performance.
-                    </p>
-                  </div>
-
-                  {/* Point 3: Boot Failure & Recovery Remediation */}
-                  <div className="p-4 rounded-xl bg-slate-50/90 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-zinc-800 space-y-1.5 transition-all hover:border-blue-500/40">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
-                        Boot Failure & Recovery Remediation
-                      </h6>
-                    </div>
-                    <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-300">
-                      Diagnosed and repaired systems stuck in Windows Error Recovery loops, boot failures, and safe-mode crashes to restore full operating system integrity.
-                    </p>
-                  </div>
-
-                  {/* Point 4: Kernel & BSOD Troubleshooting */}
-                  <div className="p-4 rounded-xl bg-slate-50/90 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-zinc-800 space-y-1.5 transition-all hover:border-blue-500/40">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
-                        Kernel & BSOD Troubleshooting
-                      </h6>
-                    </div>
-                    <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-300">
-                      Resolved Windows blue-screen stop errors (including <code className="px-1 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 font-mono text-[11px] text-purple-600 dark:text-purple-400 font-bold">THREAD_STUCK_IN_DEVICE_DRIVER</code>) using root-cause driver remediation, memory checks, and hardware component isolation.
-                    </p>
-                  </div>
+                {/* System Configuration & Cable Routing */}
+                <div className="p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200/80 dark:border-zinc-800 space-y-2 hover:border-emerald-500/40 transition-colors">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    System Configuration & Cable Routing
+                  </h4>
+                  <p className="text-xs sm:text-[13px] leading-relaxed text-slate-600 dark:text-zinc-300">
+                    Configured BIOS/UEFI firmware, completed clean OS deployments, and routed internal wiring to maintain optimal chassis airflow and thermal performance.
+                  </p>
                 </div>
-              </div>
 
-              {/* Step-by-Step Diagnostic & Recovery Breakdown */}
-              <div className="space-y-4 mb-6">
-                <h5 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-bold flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-                  Systematic Hardware Diagnostics & Remediation Workflow:
-                </h5>
+                {/* Boot Failure & Recovery Remediation */}
+                <div className="p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200/80 dark:border-zinc-800 space-y-2 hover:border-amber-500/40 transition-colors">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                    Boot Failure & Recovery Remediation
+                  </h4>
+                  <p className="text-xs sm:text-[13px] leading-relaxed text-slate-600 dark:text-zinc-300">
+                    Diagnosed and repaired systems stuck in Windows Error Recovery loops, boot failures, and safe-mode crashes to restore full operating system integrity.
+                  </p>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {/* Step 1: BSOD & Driver Halt */}
-                  <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-                          Kernel Diagnostics
-                        </span>
-                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 01</span>
-                      </div>
-                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
-                        BSOD Analysis & Driver Halt Isolation
-                      </h6>
-                      <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-400">
-                        Analyzed memory dump stop-codes (<code className="px-1 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 font-mono text-[10px] text-blue-600 dark:text-blue-400 font-bold">THREAD_STUCK_IN_DEVICE_DRIVER</code>), isolating graphics and chipset driver execution halts from underlying hardware stalls.
-                      </p>
-                    </div>
-
-                    <div className="pt-2 border-t border-slate-200 dark:border-zinc-800">
-                      <div 
-                        onClick={() => setSelectedFieldPhoto(hardwareGallery[0])}
-                        className="group relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-blue-500/60"
-                        title="Click to enlarge"
-                      >
-                        <img 
-                          src="hardware-bsod-thread-stuck.jpg" 
-                          alt="BSOD Screen" 
-                          className="w-full h-24 object-cover object-center group-hover:scale-105 transition-transform" 
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-1.5">
-                          <span className="text-[9px] font-mono text-white truncate">Dell BSOD Stop-Code</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 2: OEM Teardown & Thermal Check */}
-                  <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
-                          Chassis Teardown
-                        </span>
-                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 02</span>
-                      </div>
-                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
-                        OEM Teardown & Fan Blower Assembly
-                      </h6>
-                      <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-400">
-                        Disassembled compact OEM client systems (Dell/HP), inspecting CPU fan shroud, thermal interface compound, power delivery rails, and dust ingress points.
-                      </p>
-                    </div>
-
-                    <div className="pt-2 border-t border-slate-200 dark:border-zinc-800">
-                      <div 
-                        onClick={() => setSelectedFieldPhoto(hardwareGallery[1])}
-                        className="group relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-amber-500/60"
-                        title="Click to enlarge"
-                      >
-                        <img 
-                          src="hardware-oem-teardown-bench.jpg" 
-                          alt="OEM Teardown Bench" 
-                          className="w-full h-24 object-cover object-center group-hover:scale-105 transition-transform" 
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-1.5">
-                          <span className="text-[9px] font-mono text-white truncate">Compact OEM Chassis</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 3: Storage Migration & Stress Burn-In */}
-                  <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                          System Recovery
-                        </span>
-                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 03</span>
-                      </div>
-                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
-                        SSD Upgrade, RAM Seating & Burn-In
-                      </h6>
-                      <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-400">
-                        Migrated data off failing mechanical drives, installed high-speed solid-state drives, re-seated dual-channel memory modules, and conducted Cooler Master PSU load burn-in.
-                      </p>
-                    </div>
-
-                    <div className="pt-2 border-t border-slate-200 dark:border-zinc-800">
-                      <div 
-                        onClick={() => setSelectedFieldPhoto(hardwareGallery[2])}
-                        className="group relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-emerald-500/60"
-                        title="Click to enlarge"
-                      >
-                        <img 
-                          src="hardware-workstation-rebuild-bench.jpg" 
-                          alt="Workstation Rebuild & Burn-In Bench" 
-                          className="w-full h-24 object-cover object-center group-hover:scale-105 transition-transform" 
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-1.5">
-                          <span className="text-[9px] font-mono text-emerald-400 font-semibold truncate flex items-center gap-1">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                            Clean Boot & OS Verified
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {/* Kernel & BSOD Troubleshooting */}
+                <div className="p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200/80 dark:border-zinc-800 space-y-2 hover:border-purple-500/40 transition-colors">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                    Kernel & BSOD Troubleshooting
+                  </h4>
+                  <p className="text-xs sm:text-[13px] leading-relaxed text-slate-600 dark:text-zinc-300">
+                    Resolved Windows blue-screen stop errors (including <code className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 font-mono text-[11px] text-purple-600 dark:text-purple-400 font-bold">THREAD_STUCK_IN_DEVICE_DRIVER</code>) using root-cause driver remediation, memory checks, and hardware component isolation.
+                  </p>
                 </div>
               </div>
 
