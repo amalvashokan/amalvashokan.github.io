@@ -59,6 +59,13 @@
       font-family: 'Google Sans Flex', 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+    [id] {
+      scroll-margin-top: 5.5rem;
+    }
+
     /* TERMINAL & CODE TEXT */
     pre, pre *, code, code *, .terminal-code, .terminal-code * {
       font-family: 'Google Sans Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
@@ -518,7 +525,7 @@
     };
 
     // --- GOOGLE ANTIGRAVITY 3D PERSPECTIVE TILT & SPOTLIGHT CARD ---
-    const AntigravityTiltCard = ({ children, className = "", staggerClass = "" }) => {
+    const AntigravityTiltCard = ({ children, className = "", staggerClass = "", id = "" }) => {
       const cardRef = useRef(null);
       const [tiltStyle, setTiltStyle] = useState({});
 
@@ -550,6 +557,7 @@
 
       return (
         <div
+          id={id || undefined}
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
@@ -577,6 +585,7 @@
         return saved !== null ? saved === 'dark' : true;
       });
       const [searchQuery, setSearchQuery] = useState('');
+      const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
       
       const [toast, setToast] = useState(null);
       const [showCcnaModal, setShowCcnaModal] = useState(false);
@@ -857,6 +866,19 @@
 
       const languages = ["English", "Malayalam"];
 
+      const navLinks = [
+        { name: 'About', href: '#about', fullName: 'About Me' },
+        { name: 'Skills', href: '#skills', fullName: 'Technical Skills' },
+        { name: 'Hardware', href: '#hardware-pc', fullName: 'PC Assembly' },
+        { name: 'Cisco Lab', href: '#cisco-lab', fullName: 'Cisco Lab' },
+        { name: 'Rack', href: '#server-rack', fullName: 'Server Rack' },
+        { name: 'CCTV', href: '#cctv-surveillance', fullName: 'Surveillance' },
+        { name: 'Printers', href: '#printer-servicing', fullName: 'Printers' },
+        { name: 'Experience', href: '#experience', fullName: 'Experience' },
+        { name: 'Certifications', href: '#certifications', fullName: 'Certifications' },
+        { name: 'Contact', href: '#contact', fullName: 'Contact' },
+      ];
+
       const showToast = (msg, type = "success") => {
         setToast({ text: msg, type });
         setTimeout(() => {
@@ -920,15 +942,35 @@
 
           {/* TOP NAVIGATION BAR */}
           <header className="border-b sticky top-0 z-40 backdrop-blur-xl transition-colors bg-white/90 border-slate-200 dark:bg-[#121317]/85 dark:border-zinc-800/80 animate-nav-down">
-            <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-              <a href="#" className="flex space-x-1.5 items-center hover:opacity-80 transition-opacity p-1.5 rounded-lg" title="Amal V A">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#3279f9]"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-[#fc413d]"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-[#fbbc04]"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-[#00b95c]"></span>
+            <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+              <a href="#" className="flex items-center space-x-2.5 hover:opacity-85 transition-opacity p-1.5 rounded-lg group flex-shrink-0" title="Amal V A - Network Engineer">
+                <div className="flex space-x-1.5 items-center">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#3279f9]"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#fc413d]"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#fbbc04]"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#00b95c]"></span>
+                </div>
+                <span className="font-bold text-sm sm:text-base tracking-tight text-slate-900 dark:text-white">Amal V A</span>
               </a>
 
               <div className="flex items-center space-x-1 sm:space-x-1.5">
+                {/* TOP RIGHT NAVIGATION LINKS (DESKTOP) */}
+                <nav className="hidden lg:flex items-center space-x-0.5 text-xs font-semibold">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/80 transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  ))}
+                </nav>
+
+                {/* DESKTOP SEPARATOR */}
+                <div className="hidden lg:block h-4 w-px bg-slate-300 dark:bg-zinc-800 mx-1"></div>
+
+                {/* SOCIAL & ACTION BUTTONS */}
                 <a
                   href={profileData.linkedinUrl}
                   target="_blank"
@@ -966,7 +1008,7 @@
                   href={`mailto:${profileData.email}`}
                   title="Email"
                   aria-label="Email"
-                  className="p-2 rounded-lg border transition-all duration-200 hover:-translate-y-0.5 active:scale-95 bg-slate-100 hover:bg-white hover:border-red-400/50 border-slate-300 text-slate-600 hover:text-red-500 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-red-400 dark:hover:border-red-400/50 dark:hover:bg-zinc-800/90 shadow-sm"
+                  className="hidden sm:inline-flex p-2 rounded-lg border transition-all duration-200 hover:-translate-y-0.5 active:scale-95 bg-slate-100 hover:bg-white hover:border-red-400/50 border-slate-300 text-slate-600 hover:text-red-500 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-red-400 dark:hover:border-red-400/50 dark:hover:bg-zinc-800/90 shadow-sm"
                 >
                   <MailIcon className="w-4 h-4" />
                 </a>
@@ -975,7 +1017,7 @@
                   href={`tel:${profileData.phone}`}
                   title="Phone"
                   aria-label="Phone"
-                  className="p-2 rounded-lg border transition-all duration-200 hover:-translate-y-0.5 active:scale-95 bg-slate-100 hover:bg-white hover:border-emerald-500/50 border-slate-300 text-slate-600 hover:text-emerald-600 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-emerald-400 dark:hover:border-emerald-500/50 dark:hover:bg-zinc-800/90 shadow-sm"
+                  className="hidden sm:inline-flex p-2 rounded-lg border transition-all duration-200 hover:-translate-y-0.5 active:scale-95 bg-slate-100 hover:bg-white hover:border-emerald-500/50 border-slate-300 text-slate-600 hover:text-emerald-600 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-emerald-400 dark:hover:border-emerald-500/50 dark:hover:bg-zinc-800/90 shadow-sm"
                 >
                   <PhoneIcon className="w-4 h-4" />
                 </a>
@@ -985,7 +1027,7 @@
                 <button
                   onClick={() => setIsDarkMode(!isDarkMode)}
                   aria-label="Toggle dark/light theme"
-                  className="p-2 rounded-lg border transition-all duration-300 transform hover:rotate-45 active:scale-90 bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-800"
+                  className="p-2 rounded-lg border transition-all duration-300 transform hover:rotate-45 active:scale-90 bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-800 shadow-sm"
                   title={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
                 >
                   {isDarkMode ? (
@@ -998,8 +1040,52 @@
                     </svg>
                   )}
                 </button>
+
+                {/* MOBILE MENU TOGGLE BUTTON */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  aria-label="Toggle navigation menu"
+                  className="lg:hidden p-2 rounded-lg border transition-all duration-200 bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-800 shadow-sm"
+                  title="Toggle menu"
+                >
+                  {isMobileMenuOpen ? (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  ) : (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  )}
+                </button>
               </div>
             </div>
+
+            {/* MOBILE NAVIGATION DRAWER */}
+            {isMobileMenuOpen && (
+              <div className="lg:hidden border-t border-slate-200 dark:border-zinc-800/80 bg-white/95 dark:bg-[#121317]/95 backdrop-blur-xl px-4 py-3 animate-slide-up shadow-xl">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center space-x-2 px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800/80 transition-colors"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                      <span>{link.fullName || link.name}</span>
+                    </a>
+                  ))}
+                </div>
+                <div className="mt-3 pt-3 border-t border-slate-200 dark:border-zinc-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-zinc-500 font-mono">
+                  <span>Amal V A • CCNA Portfolio</span>
+                  <div className="flex items-center space-x-3 sm:hidden">
+                    <a href={`mailto:${profileData.email}`} className="text-red-500 hover:underline">Email</a>
+                    <a href={`tel:${profileData.phone}`} className="text-emerald-500 hover:underline">Call</a>
+                  </div>
+                </div>
+              </div>
+            )}
           </header>
 
           {/* FLOATING SYSTEM TOAST */}
@@ -1228,7 +1314,7 @@
           <main className="max-w-4xl mx-auto px-4 py-8 space-y-6 sm:space-y-8 flex-1 w-full bg-slate-50 dark:bg-[#121317] transition-colors">
             
             {/* TILE 01: ABOUT ME */}
-            <AntigravityTiltCard staggerClass="layer-card-1" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            <AntigravityTiltCard id="about" staggerClass="layer-card-1" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5 pb-3 border-b border-slate-200 dark:border-zinc-800/80">
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">About Me</h3>
                 <div className="flex flex-wrap gap-1.5 text-[11px] font-mono">
@@ -1251,7 +1337,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 02: TECHNICAL SKILLS (DIRECTLY UNDER ABOUT ME) */}
-            <AntigravityTiltCard staggerClass="layer-card-2" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            <AntigravityTiltCard id="skills" staggerClass="layer-card-2" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <div className="flex items-center justify-between mb-5 pb-3 border-b border-slate-200 dark:border-zinc-800/80">
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
                   Technical Skills
@@ -1286,7 +1372,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 03: PC ASSEMBLY & HARDWARE DIAGNOSTICS */}
-            <AntigravityTiltCard staggerClass="layer-card-3" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
+            <AntigravityTiltCard id="hardware-pc" staggerClass="layer-card-3" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
               <div className="flex items-center gap-2 mb-5 pb-3 border-b border-slate-200 dark:border-zinc-800/80">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
@@ -1411,7 +1497,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 04: CISCO ROUTING & SWITCHING (ETHERLABS) */}
-            <AntigravityTiltCard staggerClass="layer-card-4" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
+            <AntigravityTiltCard id="cisco-lab" staggerClass="layer-card-4" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
               <div className="flex items-center gap-2 mb-5 pb-3 border-b border-slate-200 dark:border-zinc-800/80">
                 <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-pulse"></span>
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
@@ -1551,7 +1637,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 05: ENTERPRISE SERVER RACK PROVISIONING & STRUCTURED CABLING */}
-            <AntigravityTiltCard staggerClass="layer-card-5" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
+            <AntigravityTiltCard id="server-rack" staggerClass="layer-card-5" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
               <div className="flex items-center gap-2 mb-5 pb-3 border-b border-slate-200 dark:border-zinc-800/80">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
@@ -1775,7 +1861,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 06: ON-SITE TROUBLESHOOTING: ENTERPRISE SURVEILLANCE & INFRASTRUCTURE RESTORATION */}
-            <AntigravityTiltCard staggerClass="layer-card-6" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
+            <AntigravityTiltCard id="cctv-surveillance" staggerClass="layer-card-6" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
               <div className="flex items-center gap-2 mb-5 pb-3 border-b border-slate-200 dark:border-zinc-800/80">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
@@ -2039,7 +2125,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 07: PRINTER HARDWARE SERVICING & ENDPOINT CONNECTIVITY */}
-            <AntigravityTiltCard staggerClass="layer-card-7" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
+            <AntigravityTiltCard id="printer-servicing" staggerClass="layer-card-7" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
               <div className="flex items-center gap-2 mb-5 pb-3 border-b border-slate-200 dark:border-zinc-800/80">
                 <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse"></span>
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
@@ -2156,7 +2242,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 08: PROFESSIONAL EXPERIENCE */}
-            <AntigravityTiltCard staggerClass="layer-card-8" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            <AntigravityTiltCard id="experience" staggerClass="layer-card-8" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <div className="mb-5 border-b border-slate-200 dark:border-zinc-800/80 pb-3">
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">Professional Experience</h3>
               </div>
@@ -2194,7 +2280,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 09: CERTIFICATIONS & EDUCATION */}
-            <AntigravityTiltCard staggerClass="layer-card-9" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            <AntigravityTiltCard id="certifications" staggerClass="layer-card-9" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                 Certifications & Education
               </h3>
@@ -2241,7 +2327,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 10: DIAGNOSTICS & PING CENTER */}
-            <AntigravityTiltCard staggerClass="layer-card-10" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            <AntigravityTiltCard id="diagnostics" staggerClass="layer-card-10" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                 Network Latency Diagnostics
               </h3>
@@ -2270,7 +2356,7 @@
             </AntigravityTiltCard>
 
             {/* TILE 11: CONTACT */}
-            <AntigravityTiltCard staggerClass="layer-card-11" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            <AntigravityTiltCard id="contact" staggerClass="layer-card-11" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                 Get in Touch
               </h3>
