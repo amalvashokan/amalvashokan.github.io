@@ -697,12 +697,12 @@
       const handleContactSubmit = (e) => {
         e.preventDefault();
         if (!formInput.name || !formInput.email || !formInput.message) {
-          showToast("Data validation missing: Please populate all fields.", "error");
+          showToast("Please fill in all fields.", "error");
           return;
         }
-        showToast("Transmitting packet to Amal V A...", "info");
+        showToast("Sending message to Amal V A...", "info");
         setTimeout(() => {
-          showToast(`Packet received from ${formInput.name}! Handshake acknowledged.`);
+          showToast(`Message sent from ${formInput.name}! Thank you.`);
           const mailtoSubject = encodeURIComponent(`Network Engineering Inquiry from ${formInput.name}`);
           const mailtoBody = encodeURIComponent(`Name: ${formInput.name}\nEmail: ${formInput.email}\n\nMessage:\n${formInput.message}`);
           window.open(`mailto:amalvashokan99@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`, '_blank');
@@ -828,11 +828,8 @@
                   <span className="beacon-radar absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#3279f9]"></span>
                 </span>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 font-mono">
+                <span className="text-xs font-semibold tracking-wide text-slate-700 dark:text-zinc-300">
                   Available For Engineering Placements
-                </span>
-                <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                  L1–L3 READY
                 </span>
               </div>
 
@@ -873,52 +870,6 @@
                     </span>
                   )}
                 </div>
-
-                {/* QUICK COMPETENCY FILTER CHIPS */}
-                <div className="flex flex-wrap items-center justify-center gap-1.5 mt-3 hero-chips-anim">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mr-1 select-none">
-                    Quick filter:
-                  </span>
-                  {["OSPF", "3750G", "2921", "Cabling", "CCNA", "VLAN"].map((tag) => {
-                    const isActive = searchQuery.toLowerCase() === tag.toLowerCase();
-                    return (
-                      <button
-                        key={tag}
-                        onClick={() => setSearchQuery(isActive ? '' : tag)}
-                        className={`text-[10px] font-mono px-2 py-0.5 rounded-full border transition-all duration-200 ${
-                          isActive
-                            ? 'bg-emerald-500 text-black border-emerald-500 font-bold shadow-sm scale-105'
-                            : 'bg-slate-100/90 hover:bg-slate-200/90 text-slate-600 dark:bg-zinc-900/90 dark:hover:bg-zinc-800 dark:text-zinc-400 border-slate-200 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 hover:scale-105'
-                        }`}
-                      >
-                        {tag}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* NETWORK TELEMETRY STATUS BAR */}
-              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8 pt-4 border-t border-slate-200/60 dark:border-zinc-800/60 text-[10px] font-mono text-slate-500 dark:text-zinc-500 hero-chips-anim select-none">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  CCNA: CSCO15297584
-                </span>
-                <span className="hidden sm:inline text-slate-300 dark:text-zinc-700">•</span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                  ROUTING: OSPF / EIGRP
-                </span>
-                <span className="hidden sm:inline text-slate-300 dark:text-zinc-700">•</span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-                  CISCO: 2921 / 3750G
-                </span>
-                <span className="hidden sm:inline text-slate-300 dark:text-zinc-700">•</span>
-                <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                  LAYER 1-3 VERIFIED
-                </span>
               </div>
 
             </div>
@@ -932,16 +883,6 @@
               
               {/* LAYER 01: PROFILE CARD - PERSONAL DETAILS & PROFESSIONAL SUMMARY */}
               <AntigravityTiltCard staggerClass="layer-card-1" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
-                
-                {/* Telemetry Header */}
-                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
-                  <span className="flex items-center gap-1.5 font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                    LAYER // 01 • IDENTITY MATRIX
-                  </span>
-                  <span>NODE: AMAL-VA-01</span>
-                </div>
-
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                   <div>
                     <h1 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">{profileData.name}</h1>
@@ -1049,21 +990,10 @@
                 </div>
               </AntigravityTiltCard>
 
-              {/* LAYER 02: PROFESSIONAL EXPERIENCE: ETHERLABS & IGATE NETWORKS */}
+              {/* LAYER 02: PROFESSIONAL EXPERIENCE */}
               <AntigravityTiltCard staggerClass="layer-card-2" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
-                
-                {/* Telemetry Header */}
-                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
-                  <span className="flex items-center gap-1.5 font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                    LAYER // 02 • INFRASTRUCTURE ROLES
-                  </span>
-                  <span>2 ENTERPRISE DEPLOYMENTS</span>
-                </div>
-
-                <div className="flex items-center justify-between mb-5 border-b border-slate-200 dark:border-zinc-800/80 pb-3">
+                <div className="mb-5 border-b border-slate-200 dark:border-zinc-800/80 pb-3">
                   <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">Professional Experience</h3>
-                  <span className="text-[11px] font-mono text-slate-500 dark:text-zinc-500">2 Enterprise Roles</span>
                 </div>
 
                 <div className="space-y-8">
@@ -1103,18 +1033,8 @@
                 </div>
               </AntigravityTiltCard>
 
-              {/* LAYER 03: CERTIFICATIONS & EDUCATION (FROM CV) */}
+              {/* LAYER 03: CERTIFICATIONS & EDUCATION */}
               <AntigravityTiltCard staggerClass="layer-card-3" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
-                
-                {/* Telemetry Header */}
-                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
-                  <span className="flex items-center gap-1.5 font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                    LAYER // 03 • ACCREDITATION & ACADEMY
-                  </span>
-                  <span>VERIFIED CREDENTIALS</span>
-                </div>
-
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                   Certifications & Education
                 </h3>
@@ -1156,18 +1076,8 @@
             {/* RIGHT COLUMN: TECHNICAL SKILLS (CATEGORIZED CV MATRIX), DIAGNOSTICS, CONTACT */}
             <div className="space-y-6">
               
-              {/* LAYER 04: TECHNICAL SKILL MATRIX: 4 STRUCTURED CATEGORIES FROM CV */}
+              {/* LAYER 04: TECHNICAL SKILLS */}
               <AntigravityTiltCard staggerClass="layer-card-4" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
-                
-                {/* Telemetry Header */}
-                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
-                  <span className="flex items-center gap-1.5 font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-                    LAYER // 04 • PROTOCOL & HARDWARE STACK
-                  </span>
-                  <span>4 STACKS</span>
-                </div>
-
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                   <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
                     Technical Skills
@@ -1211,16 +1121,6 @@
 
               {/* LAYER 05: DIAGNOSTICS & PING CENTER */}
               <AntigravityTiltCard staggerClass="layer-card-5" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
-                
-                {/* Telemetry Header */}
-                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
-                  <span className="flex items-center gap-1.5 font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                    LAYER // 05 • ICMP TELEMETRY GATEWAY
-                  </span>
-                  <span>PORT 80 / ICMP ECHO</span>
-                </div>
-
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                   Network Latency Diagnostics
                 </h3>
@@ -1248,50 +1148,40 @@
                 )}
               </AntigravityTiltCard>
 
-              {/* LAYER 06: CONTACT GATEWAY */}
+              {/* LAYER 06: CONTACT */}
               <AntigravityTiltCard staggerClass="layer-card-6" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
-                
-                {/* Telemetry Header */}
-                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
-                  <span className="flex items-center gap-1.5 font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                    LAYER // 06 • GATEWAY HANDSHAKE
-                  </span>
-                  <span>TCP 3-WAY SYN / ACK</span>
-                </div>
-
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
-                  Establish Handshake
+                  Get in Touch
                 </h3>
 
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div className="space-y-3">
                     <div>
-                      <label className="block text-[10px] uppercase font-bold tracking-wider text-slate-600 dark:text-zinc-400 font-mono mb-1">Your Name</label>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-zinc-400 mb-1">Your Name</label>
                       <input
                         type="text"
                         required
                         value={formInput.name}
                         onChange={(e) => setFormInput({ ...formInput, name: e.target.value })}
-                        placeholder="Enterprise Recruiter"
+                        placeholder="Your Name"
                         className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:focus:border-emerald-500 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none transition-all duration-200"
                       />
                     </div>
                     <div>
-                      <label className="block text-[10px] uppercase font-bold tracking-wider text-slate-600 dark:text-zinc-400 font-mono mb-1">Email</label>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-zinc-400 mb-1">Email</label>
                       <input
                         type="email"
                         required
                         value={formInput.email}
                         onChange={(e) => setFormInput({ ...formInput, email: e.target.value })}
-                        placeholder="recruiter@enterprise.com"
+                        placeholder="your.email@example.com"
                         className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:focus:border-emerald-500 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none transition-all duration-200"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[10px] uppercase font-bold tracking-wider text-slate-600 dark:text-zinc-400 font-mono mb-1">Handshake Requirements</label>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-zinc-400 mb-1">Message</label>
                     <textarea
                       rows="3"
                       required
@@ -1306,12 +1196,12 @@
                     type="submit"
                     className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-black font-bold text-xs uppercase tracking-wider transition-all duration-200 hover:-translate-y-0.5 active:scale-95 shadow-sm hover:shadow-lg"
                   >
-                    Transmit Packet Handshake
+                    Send Message
                   </button>
 
                   <div className="relative flex items-center justify-center my-3">
                     <span className="w-full border-t border-slate-200 dark:border-zinc-800"></span>
-                    <span className="px-2 text-[10px] uppercase font-mono text-slate-500 dark:text-zinc-500 bg-white dark:bg-zinc-950">or instant message</span>
+                    <span className="px-2 text-xs uppercase font-medium text-slate-500 dark:text-zinc-500 bg-white dark:bg-zinc-950">or</span>
                     <span className="w-full border-t border-slate-200 dark:border-zinc-800"></span>
                   </div>
 
@@ -1332,14 +1222,11 @@
           </main>
 
           {/* FOOTER */}
-          <footer className="border-t py-12 mt-12 bg-white dark:bg-[#121317] border-slate-200 dark:border-zinc-900 text-slate-600 dark:text-zinc-500 transition-colors layer-card-footer">
-            <div className="max-w-4xl mx-auto px-4 text-center space-y-3">
-              <div className="flex items-center justify-center space-x-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                <p className="text-xs font-mono font-medium text-slate-700 dark:text-zinc-400">Gateway Node Active | Thrissur, Kerala</p>
-              </div>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-slate-500 dark:text-zinc-600">
-                &copy; {new Date().getFullYear()} AMAL V A. All network packets preserved under secure structures.
+          <footer className="border-t py-10 mt-12 bg-white dark:bg-[#121317] border-slate-200 dark:border-zinc-900 text-slate-600 dark:text-zinc-500 transition-colors layer-card-footer">
+            <div className="max-w-4xl mx-auto px-4 text-center space-y-2">
+              <p className="text-xs font-medium text-slate-700 dark:text-zinc-400">Thrissur, Kerala, India</p>
+              <p className="text-xs text-slate-500 dark:text-zinc-600">
+                &copy; {new Date().getFullYear()} Amal V A. All rights reserved.
               </p>
             </div>
           </footer>
