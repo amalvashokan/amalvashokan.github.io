@@ -751,22 +751,12 @@
           {/* TOP NAVIGATION BAR */}
           <header className="border-b sticky top-0 z-40 backdrop-blur-xl transition-colors bg-white/90 border-slate-200 dark:bg-[#121317]/85 dark:border-zinc-800/80 animate-nav-down">
             <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-              <div className="flex items-center space-x-3 sm:space-x-4">
-                <div className="flex items-center space-x-2.5">
-                  <div className="flex space-x-1 items-center">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#3279f9]"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#fc413d]"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#fbbc04]"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#00b95c]"></span>
-                  </div>
-                  <span className="font-black tracking-tight text-xl sm:text-2xl text-slate-900 dark:text-white select-none">
-                    Amal V A
-                  </span>
-                </div>
-                <span className="hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-zinc-900 border border-slate-300 dark:border-zinc-800 text-slate-700 dark:text-zinc-400">
-                  Network Engineer
-                </span>
-              </div>
+              <a href="#" className="flex space-x-1.5 items-center hover:opacity-80 transition-opacity p-1.5 rounded-lg" title="Amal V A">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#3279f9]"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#fc413d]"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#fbbc04]"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#00b95c]"></span>
+              </a>
 
               <div className="flex items-center space-x-1 sm:space-x-1.5">
                 <a
@@ -879,13 +869,18 @@
               </div>
 
               {/* HERO NAME */}
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none text-slate-900 dark:text-white hero-title-anim font-sans mb-4 select-none">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none text-slate-900 dark:text-white hero-title-anim font-sans mb-3 select-none">
                 Amal V A
               </h1>
 
+              {/* DESIGNATION */}
+              <p className="text-lg sm:text-2xl font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-5 select-none hero-sub-anim font-mono">
+                Network Engineer
+              </p>
+
               {/* MAIN HERO HEADLINE */}
               <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto select-none text-slate-800 dark:text-zinc-200 hero-sub-anim font-sans">
-                Network Engineer specialized in <span className="bg-gradient-to-r from-[#3279f9] via-[#00b95c] to-[#fbbc04] bg-clip-text text-transparent">enterprise routing</span>, switching, and robust hardware infrastructure.
+                Specialized in <span className="bg-gradient-to-r from-[#3279f9] via-[#00b95c] to-[#fbbc04] bg-clip-text text-transparent">enterprise routing</span>, switching, and robust hardware infrastructure.
               </h2>
               
               {/* SUBTITLE */}
