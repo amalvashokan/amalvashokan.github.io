@@ -205,7 +205,8 @@
     .layer-card-5 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both; }
     .layer-card-6 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both; }
     .layer-card-7 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.72s both; }
-    .layer-card-footer { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both; }
+    .layer-card-8 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both; }
+    .layer-card-footer { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.84s both; }
 
     /* ZERO-GRAVITY CONTINUOUS LEVITATION (WEIGHTLESS FLOAT) */
     @keyframes zeroGravityFloat {
@@ -576,6 +577,7 @@
       
       const [toast, setToast] = useState(null);
       const [showCcnaModal, setShowCcnaModal] = useState(false);
+      const [selectedFieldPhoto, setSelectedFieldPhoto] = useState(null);
       const [formInput, setFormInput] = useState({ name: '', email: '', message: '' });
       const [pingResult, setPingResult] = useState(null);
       const [isPinging, setIsPinging] = useState(false);
@@ -601,6 +603,40 @@
           document.body.className = "bg-slate-50 text-slate-800 selection:bg-blue-500/20 selection:text-blue-600 min-h-screen transition-colors duration-300 font-sans";
         }
       }, [isDarkMode]);
+
+      // Field Case Study: CCTV Troubleshooting Gallery
+      const cctvGallery = [
+        {
+          src: "cctv-ivms-error.jpg",
+          title: "Outage Telemetry & Error Isolation",
+          caption: "Client iVMS-4200 live grid reporting multi-channel stream drops and HCNetSDK.dll[11] transmission timeout errors.",
+          badge: "Incident Log"
+        },
+        {
+          src: "cctv-camera-coupler.jpg",
+          title: "Physical Layer & Coupler Diagnostics",
+          caption: "Inspecting weather-resistant RJ45 link coupler, drop cable integrity, and ceiling termination run.",
+          badge: "Layer 1 Inspection"
+        },
+        {
+          src: "cctv-rack-patchpanel.jpg",
+          title: "Patch Panel Remediation & Cable Dressing",
+          caption: "Molex 24-Port Cat6 patch panel punch-down and TP-Link Gigabit switch link negotiation restoration.",
+          badge: "Rack & Layer 2"
+        },
+        {
+          src: "cctv-nvr-channels-1-5.jpg",
+          title: "Subnet Re-Addressing: Channels D1–D5",
+          caption: "Hikvision NVR device list verified with static bindings across 192.168.31.0/24 subnet.",
+          badge: "Layer 3 Restored"
+        },
+        {
+          src: "cctv-nvr-channels-6-10.jpg",
+          title: "Stream Authentication: Channels D6–D10",
+          caption: "Green operational status verified across all channels D6 through D10 with 100% feed uptime.",
+          badge: "100% Verified"
+        }
+      ];
 
       // EXACT CV DATA: Personal Details & Professional Summary
       const profileData = {
@@ -940,6 +976,62 @@
             </div>
           )}
 
+          {/* FIELD PHOTO LIGHTBOX MODAL */}
+          {selectedFieldPhoto && (
+            <div 
+              className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md modal-backdrop-anim no-print"
+              onClick={() => setSelectedFieldPhoto(null)}
+            >
+              <div 
+                className="relative max-w-2xl sm:max-w-3xl w-full bg-white dark:bg-[#18191e] border border-slate-200 dark:border-zinc-800 rounded-3xl p-5 sm:p-6 shadow-2xl text-left space-y-4 modal-card-anim"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <button 
+                  onClick={() => setSelectedFieldPhoto(null)}
+                  className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-slate-600 dark:text-zinc-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors z-10"
+                  aria-label="Close photo preview"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                </button>
+
+                {/* Photo Display Frame */}
+                <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black flex items-center justify-center max-h-[62vh]">
+                  <img 
+                    src={selectedFieldPhoto.src} 
+                    alt={selectedFieldPhoto.title} 
+                    className="max-h-[62vh] w-auto max-w-full object-contain mx-auto" 
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                      {selectedFieldPhoto.badge}
+                    </span>
+                    <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                      {selectedFieldPhoto.title}
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-[13px] text-slate-600 dark:text-zinc-300 leading-relaxed font-sans">
+                    {selectedFieldPhoto.caption}
+                  </p>
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={() => setSelectedFieldPhoto(null)}
+                    className="px-5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity"
+                  >
+                    Close Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* CORE HERO SECTION (FIRST SHOWING CARD) */}
           <section className="relative w-full overflow-hidden border-b border-slate-200 dark:border-zinc-800/80 bg-white dark:bg-[#121317] transition-colors no-print">
             
@@ -1149,8 +1241,291 @@
               </div>
             </AntigravityTiltCard>
 
-            {/* TILE 04: PROFESSIONAL EXPERIENCE */}
-            <AntigravityTiltCard staggerClass="layer-card-4" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            {/* TILE 04: ON-SITE TROUBLESHOOTING: ENTERPRISE SURVEILLANCE & INFRASTRUCTURE RESTORATION */}
+            <AntigravityTiltCard staggerClass="layer-card-4" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors overflow-hidden">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5 pb-3 border-b border-slate-200 dark:border-zinc-800/80">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
+                    On-Site Troubleshooting: Enterprise Surveillance & Infrastructure Restoration
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                  <span className="px-2.5 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-800/80">
+                    Field Incident Case Study
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800/80">
+                    100% Restored
+                  </span>
+                </div>
+              </div>
+
+              {/* Subheading & Incident Overview with Outage Telemetry Photo */}
+              <div className="mb-6 space-y-3">
+                <h4 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-white">
+                  Root-Cause Isolation and Recovery of Multi-Channel IP Camera Outage
+                </h4>
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center p-4 rounded-xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200/80 dark:border-zinc-800">
+                  <div className="md:col-span-8 space-y-2 text-xs sm:text-[13px] leading-relaxed text-slate-700 dark:text-zinc-300">
+                    <p className="font-semibold text-slate-800 dark:text-zinc-200 flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                      </svg>
+                      Incident Summary:
+                    </p>
+                    <p>
+                      Dispatched to resolve a critical surveillance outage where client management consoles reported multi-channel feed drops, connection timeouts, and stream transmission failures (<code className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 font-mono text-[11px] text-red-600 dark:text-red-400 font-bold">HCNetSDK.dll[11]</code> transmission errors) across an enterprise Hikvision deployment.
+                    </p>
+                  </div>
+                  <div 
+                    onClick={() => setSelectedFieldPhoto({
+                      src: "cctv-ivms-error.jpg",
+                      title: "iVMS-4200 Outage Telemetry & Error Isolation",
+                      caption: "Client management console reporting multi-channel feed drops and HCNetSDK.dll[11] stream transmission timeout errors.",
+                      badge: "Outage Detection"
+                    })}
+                    className="md:col-span-4 group relative rounded-xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-amber-500/60 shadow-sm"
+                  >
+                    <img 
+                      src="cctv-ivms-error.jpg" 
+                      alt="iVMS-4200 Surveillance Feed Error" 
+                      className="w-full h-28 object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
+                      <span className="text-[10px] font-mono text-white font-medium flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                        HCNetSDK.dll[11] Error Log
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step-by-Step Diagnostic Breakdown with Photos in each Step */}
+              <div className="space-y-4 mb-6">
+                <h5 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-bold flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                  Conducted Systematic Layer 1 Through Layer 3 Diagnostics:
+                </h5>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* Step 1: Physical Layer + 2 Photos */}
+                  <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                          Layer 1
+                        </span>
+                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 01</span>
+                      </div>
+                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
+                        Physical Layer Diagnostics & Remediation
+                      </h6>
+                      <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-400">
+                        Inspected physical link paths and weather-resistant couplers. Isolated unstable runs by testing patch cables and re-punching down terminations across a Molex 24-port Cat6 patch panel rack connected to a TP-Link Gigabit switch, restoring continuous link negotiation and power delivery.
+                      </p>
+                    </div>
+
+                    {/* Step 1 Photos (+2 Photos) */}
+                    <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 dark:border-zinc-800">
+                      <div 
+                        onClick={() => setSelectedFieldPhoto({
+                          src: "cctv-camera-coupler.jpg",
+                          title: "Physical Layer & Coupler Diagnostics",
+                          caption: "Inspecting weather-resistant RJ45 link coupler, drop cable integrity, and ceiling termination run.",
+                          badge: "Layer 1 Inspection"
+                        })}
+                        className="group relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-blue-500/60"
+                        title="Click to enlarge"
+                      >
+                        <img 
+                          src="cctv-camera-coupler.jpg" 
+                          alt="Coupler inspection" 
+                          className="w-full h-20 object-cover object-center group-hover:scale-105 transition-transform" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-1">
+                          <span className="text-[9px] font-mono text-white truncate">Coupler Run</span>
+                        </div>
+                      </div>
+
+                      <div 
+                        onClick={() => setSelectedFieldPhoto({
+                          src: "cctv-rack-patchpanel.jpg",
+                          title: "Patch Panel Remediation & Rack Dressing",
+                          caption: "Molex 24-Port Cat6 patch panel punch-down and TP-Link Gigabit switch link negotiation restoration.",
+                          badge: "Rack & Layer 2"
+                        })}
+                        className="group relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-blue-500/60"
+                        title="Click to enlarge"
+                      >
+                        <img 
+                          src="cctv-rack-patchpanel.jpg" 
+                          alt="Molex Cat6 Patch Panel Rack" 
+                          className="w-full h-20 object-cover object-center group-hover:scale-105 transition-transform" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-1">
+                          <span className="text-[9px] font-mono text-white truncate">Molex Cat6 Rack</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Step 2: Network & Endpoint + 1 Photo */}
+                  <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
+                          Layer 2 & 3
+                        </span>
+                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 02</span>
+                      </div>
+                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
+                        Network & Endpoint Re-Addressing
+                      </h6>
+                      <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-400">
+                        Resolved IP reachability issues and camera dropouts by re-scanning device discovery protocols, standardizing endpoints across the <code className="px-1 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 font-mono text-[11px] text-cyan-600 dark:text-cyan-400 font-bold">192.168.31.0/24</code> subnet, and binding camera streams to stable static entries.
+                      </p>
+                    </div>
+
+                    {/* Step 2 Photo (+1 Photo) */}
+                    <div className="pt-2 border-t border-slate-200 dark:border-zinc-800">
+                      <div 
+                        onClick={() => setSelectedFieldPhoto({
+                          src: "cctv-nvr-channels-1-5.jpg",
+                          title: "Subnet Re-Addressing: Channels D1–D5",
+                          caption: "Hikvision NVR device list verified with static bindings across 192.168.31.0/24 subnet.",
+                          badge: "Layer 3 Restored"
+                        })}
+                        className="group relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-cyan-500/60"
+                        title="Click to enlarge"
+                      >
+                        <img 
+                          src="cctv-nvr-channels-1-5.jpg" 
+                          alt="NVR Subnet Channels D1-D5" 
+                          className="w-full h-20 object-cover object-center group-hover:scale-105 transition-transform" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-1">
+                          <span className="text-[9px] font-mono text-white truncate">Subnet 192.168.31.0/24 (D1–D5)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Step 3: Validation & Stream Restoration + 1 Photo */}
+                  <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                          Application / NVR
+                        </span>
+                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 03</span>
+                      </div>
+                      <h6 className="text-xs font-bold text-slate-900 dark:text-white">
+                        Validation & Stream Restoration
+                      </h6>
+                      <p className="text-[12px] leading-relaxed text-slate-600 dark:text-zinc-400">
+                        Re-authenticated stream credentials directly on the NVR console, verifying green operational status across all active channels (D1 through D10) and achieving 100% video feed uptime on the live multi-view client.
+                      </p>
+                    </div>
+
+                    {/* Step 3 Photo (+1 Photo) */}
+                    <div className="pt-2 border-t border-slate-200 dark:border-zinc-800">
+                      <div 
+                        onClick={() => setSelectedFieldPhoto({
+                          src: "cctv-nvr-channels-6-10.jpg",
+                          title: "Stream Authentication: Channels D6–D10",
+                          caption: "Green operational status verified across all channels D6 through D10 with 100% feed uptime.",
+                          badge: "100% Verified"
+                        })}
+                        className="group relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 bg-black cursor-pointer hover:border-emerald-500/60"
+                        title="Click to enlarge"
+                      >
+                        <img 
+                          src="cctv-nvr-channels-6-10.jpg" 
+                          alt="NVR Verified Channels D6-D10" 
+                          className="w-full h-20 object-cover object-center group-hover:scale-105 transition-transform" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-1">
+                          <span className="text-[9px] font-mono text-emerald-400 font-semibold truncate flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            Channels D6–D10 Verified
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Real Field Photo Evidence Gallery */}
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center justify-between">
+                  <h5 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-bold flex items-center gap-2">
+                    <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    Field Photographic Documentation
+                  </h5>
+                  <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">
+                    Click photo to inspect in full view
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                  {cctvGallery.map((item, idx) => (
+                    <div 
+                      key={idx}
+                      onClick={() => setSelectedFieldPhoto(item)}
+                      className="group relative rounded-xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-slate-900 cursor-pointer hover:border-emerald-500/60 dark:hover:border-emerald-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    >
+                      <div className="h-28 sm:h-32 overflow-hidden bg-black flex items-center justify-center">
+                        <img 
+                          src={item.src} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
+                        />
+                      </div>
+                      <div className="p-2.5 bg-white dark:bg-zinc-900 border-t border-slate-200 dark:border-zinc-800 space-y-1">
+                        <span className="inline-block px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300">
+                          {item.badge}
+                        </span>
+                        <p className="text-[11px] font-bold text-slate-900 dark:text-white truncate">
+                          {item.title}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Technical Skills Demonstrated */}
+              <div className="pt-4 border-t border-slate-200 dark:border-zinc-800/80">
+                <span className="text-[11px] font-mono uppercase font-bold text-slate-500 dark:text-zinc-400 block mb-2">
+                  Technical Skills Demonstrated:
+                </span>
+                <div className="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                  {[
+                    "Layer 1–3 Fault Isolation",
+                    "Structured Cabling (Molex Cat6)",
+                    "Switch & Rack Troubleshooting",
+                    "Static IP Scheme Standardization",
+                    "Hikvision NVR & iVMS-4200 Configuration"
+                  ].map((skill, sIdx) => (
+                    <span 
+                      key={sIdx}
+                      className="px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800/80 text-emerald-800 dark:text-emerald-300 font-semibold"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </AntigravityTiltCard>
+
+            {/* TILE 05: PROFESSIONAL EXPERIENCE */}
+            <AntigravityTiltCard staggerClass="layer-card-5" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <div className="mb-5 border-b border-slate-200 dark:border-zinc-800/80 pb-3">
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">Professional Experience</h3>
               </div>
@@ -1187,8 +1562,8 @@
               </div>
             </AntigravityTiltCard>
 
-            {/* TILE 05: CERTIFICATIONS & EDUCATION */}
-            <AntigravityTiltCard staggerClass="layer-card-5" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            {/* TILE 06: CERTIFICATIONS & EDUCATION */}
+            <AntigravityTiltCard staggerClass="layer-card-6" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                 Certifications & Education
               </h3>
@@ -1242,8 +1617,8 @@
               </div>
             </AntigravityTiltCard>
 
-            {/* TILE 06: DIAGNOSTICS & PING CENTER */}
-            <AntigravityTiltCard staggerClass="layer-card-6" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            {/* TILE 07: DIAGNOSTICS & PING CENTER */}
+            <AntigravityTiltCard staggerClass="layer-card-7" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                 Network Latency Diagnostics
               </h3>
@@ -1271,8 +1646,8 @@
               )}
             </AntigravityTiltCard>
 
-            {/* TILE 07: CONTACT */}
-            <AntigravityTiltCard staggerClass="layer-card-7" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+            {/* TILE 08: CONTACT */}
+            <AntigravityTiltCard staggerClass="layer-card-8" className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
               <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                 Get in Touch
               </h3>
