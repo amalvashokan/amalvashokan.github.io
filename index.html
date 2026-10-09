@@ -6,6 +6,12 @@
   <meta name="description" content="Amal V A - Network Engineer CV & Portfolio. CCNA certified professional specialized in enterprise routing, switching, Cisco hardware, and structured cabling infrastructure.">
   <title>Amal V A - Network Engineer</title>
   
+  <!-- Google Antigravity Fonts (Google Sans Flex & Google Sans Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,ROND@8..144,-10..0,25..150,300..800,0..100&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -13,13 +19,22 @@
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Google Sans Flex', 'Google Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['Google Sans Flex', 'Google Sans', 'sans-serif'],
+            code: ['Google Sans Code', 'monospace'],
+          },
           colors: {
             brand: {
               black: '#000000',
-              dark: '#09090b',
-              surface: '#121215',
-              card: '#18181b',
-              border: '#27272a',
+              dark: '#121317', /* Google Antigravity grey-1200 */
+              surface: '#18191d', /* Google Antigravity grey-1100 */
+              card: '#212226', /* Google Antigravity grey-1000 */
+              border: '#2f3034', /* Google Antigravity grey-900 */
+              blue: '#3279f9', /* Google Antigravity Blue */
+              green: '#00b95c', /* Google Green */
+              yellow: '#fbbc04', /* Google Yellow */
+              red: '#fc413d', /* Google Red */
             }
           }
         }
@@ -27,8 +42,28 @@
     }
   </script>
   
-  <!-- CSS Animations & Global Styles -->
+  <!-- Google Antigravity Transition Engine & Global Styles -->
   <style>
+    :root {
+      --palette-grey-1200: #121317;
+      --palette-grey-1100: #18191d;
+      --palette-grey-1000: #212226;
+      --palette-blue-600: #3279f9;
+      --palette-green-600: #00b95c;
+      --palette-yellow-600: #fbbc04;
+      --palette-red-600: #fc413d;
+    }
+
+    /* APPLY GOOGLE SANS FLEX TO ALL TEXT ACROSS ENTIRE PORTFOLIO (PERSONAL, HEADINGS, BODY, BADGES, BUTTONS, CARDS) */
+    *, *::before, *::after, html, body, button, input, textarea, select {
+      font-family: 'Google Sans Flex', 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    }
+
+    /* TERMINAL & CODE TEXT */
+    pre, pre *, code, code *, .terminal-code, .terminal-code * {
+      font-family: 'Google Sans Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    }
+
     @keyframes slideUp {
       from { transform: translateY(1rem); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -39,6 +74,11 @@
     @media print {
       header, .no-print { display: none !important; }
       body { background: white !important; color: black !important; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+      }
     }
     /* Sleek custom scrollbars */
     ::-webkit-scrollbar {
@@ -46,14 +86,14 @@
       height: 6px;
     }
     html.dark ::-webkit-scrollbar-track {
-      background: #09090b;
+      background: #121317;
     }
     html.dark ::-webkit-scrollbar-thumb {
       background: #27272a;
       border-radius: 3px;
     }
     html.dark ::-webkit-scrollbar-thumb:hover {
-      background: #3f3f46;
+      background: #3279f9;
     }
     html:not(.dark) ::-webkit-scrollbar-track {
       background: #f1f5f9;
@@ -63,11 +103,151 @@
       border-radius: 3px;
     }
     html:not(.dark) ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
+      background: #3279f9;
+    }
+
+    /* ============================================================
+       GOOGLE ANTIGRAVITY "LIFTOFF" TRANSITION SYSTEM
+       ============================================================ */
+    @keyframes navSlideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .animate-nav-down {
+      animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* GOOGLE SPECTRUM GRADIENT FLOW */
+    @keyframes googleSpectrumFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-spectrum-flow {
+      background-size: 200% 200%;
+      animation: googleSpectrumFlow 6s ease infinite;
+    }
+
+    /* WEIGHTLESS LIFTOFF ENTRANCE KEYFRAMES */
+    @keyframes antigravityLiftoff {
+      0% {
+        opacity: 0;
+        transform: perspective(1000px) translateY(45px) scale(0.96);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: perspective(1000px) translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    /* FIRST SHOWING CARD (HERO) TRANSITION SEQUENCE */
+    @keyframes heroBadgeLiftoff {
+      0% { opacity: 0; transform: translateY(-20px) scale(0.9); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+    @keyframes heroTitleLiftoff {
+      0% { opacity: 0; transform: translateY(32px); filter: blur(8px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    @keyframes heroSubLiftoff {
+      0% { opacity: 0; transform: translateY(22px); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    @keyframes heroSearchLiftoff {
+      0% { opacity: 0; transform: translateY(28px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes heroChipsLiftoff {
+      0% { opacity: 0; transform: translateY(18px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ambientAntigravityGlow {
+      0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.65; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .hero-badge-anim {
+      animation: heroBadgeLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+    }
+    .hero-title-anim {
+      animation: heroTitleLiftoff 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+    }
+    .hero-sub-anim {
+      animation: heroSubLiftoff 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+    }
+    .hero-search-anim {
+      animation: heroSearchLiftoff 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    }
+    .hero-chips-anim {
+      animation: heroChipsLiftoff 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    }
+    .hero-ambient-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 380px;
+      border-radius: 9999px;
+      pointer-events: none;
+      animation: ambientAntigravityGlow 8s ease-in-out infinite;
+      filter: blur(85px);
+      z-index: 1;
+    }
+
+    /* ALL CONTENT LAYERS STAGGERED LIFTOFF */
+    .layer-card-1 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both; }
+    .layer-card-2 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both; }
+    .layer-card-3 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both; }
+    .layer-card-4 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
+    .layer-card-5 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both; }
+    .layer-card-6 { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both; }
+    .layer-card-footer { animation: antigravityLiftoff 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.62s both; }
+
+    /* ZERO-GRAVITY CONTINUOUS LEVITATION (WEIGHTLESS FLOAT) */
+    @keyframes zeroGravityFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+    .zero-g-float {
+      animation: zeroGravityFloat 6s ease-in-out infinite;
+    }
+
+    /* INTERACTIVE 3D PERSPECTIVE LAYER CARD & SPOTLIGHT DYNAMICS */
+    .interactive-layer-card {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform, box-shadow, border-color;
+      border-radius: 1.25rem;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    html.dark .interactive-layer-card:hover {
+      border-color: rgba(50, 121, 249, 0.4);
+      box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.85),
+                  0 0 30px -5px rgba(50, 121, 249, 0.12),
+                  0 0 15px -3px rgba(0, 185, 92, 0.08);
+    }
+    html:not(.dark) .interactive-layer-card:hover {
+      border-color: rgba(50, 121, 249, 0.45);
+      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.1),
+                  0 0 25px -5px rgba(50, 121, 249, 0.08);
+    }
+
+    /* TELEMETRY BEACON PULSE WITH GOOGLE SPECTRUM GLOW */
+    @keyframes beaconRadar {
+      0% { transform: scale(0.95); opacity: 0.9; }
+      50% { transform: scale(1.6); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+    .beacon-radar {
+      animation: beaconRadar 2.2s infinite ease-out;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-black dark:text-zinc-100 selection:bg-slate-200 dark:selection:bg-zinc-800 selection:text-black dark:selection:text-white min-h-screen transition-colors duration-300">
+<body class="bg-slate-50 text-slate-800 dark:bg-[#121317] dark:text-zinc-100 selection:bg-blue-500/20 selection:text-blue-500 dark:selection:bg-blue-500/30 dark:selection:text-blue-300 min-h-screen transition-colors duration-300">
   
   <div id="root"></div>
 
@@ -125,7 +305,7 @@
       </svg>
     );
 
-    // --- INTERACTIVE ANTIGRAVITY ENGINE (HTML5 CANVAS Particle Flow) ---
+    // --- INTERACTIVE GOOGLE ANTIGRAVITY PARTICLE ENGINE (Liftoff & Zero-G Mesh) ---
     const AntigravityCanvas = ({ isDarkMode }) => {
       const canvasRef = useRef(null);
       const containerRef = useRef(null);
@@ -141,30 +321,27 @@
         let canvasWidth = 800;
         let canvasHeight = 300;
 
-        const particleCount = 110;
+        const particleCount = 125;
         const particles = [];
+        // Google Antigravity Signature Color Palette (Blue, Green, Yellow, Red, Starlight)
         const colors = isDarkMode 
-          ? ['rgba(255, 255, 255, 0.6)', 'rgba(210, 210, 210, 0.45)', 'rgba(160, 160, 160, 0.35)', 'rgba(255, 255, 255, 0.3)', 'rgba(120, 120, 120, 0.25)']
-          : ['rgba(30, 41, 59, 0.45)', 'rgba(71, 85, 105, 0.4)', 'rgba(100, 116, 139, 0.35)', 'rgba(15, 23, 42, 0.35)', 'rgba(148, 163, 184, 0.3)'];
+          ? ['rgba(50, 121, 249, 0.8)', 'rgba(0, 185, 92, 0.8)', 'rgba(251, 188, 4, 0.8)', 'rgba(252, 65, 61, 0.8)', 'rgba(255, 255, 255, 0.9)']
+          : ['rgba(50, 121, 249, 0.7)', 'rgba(0, 185, 92, 0.7)', 'rgba(251, 188, 4, 0.7)', 'rgba(252, 65, 61, 0.7)', 'rgba(30, 41, 59, 0.6)'];
 
         const initParticles = (width, height) => {
           particles.length = 0;
-          const centerX = width / 2;
-          const centerY = height / 2;
-
           for (let i = 0; i < particleCount; i++) {
-            const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 120 + 10;
             particles.push({
-              x: centerX + Math.cos(angle) * distance,
-              y: centerY + Math.sin(angle) * distance,
-              vx: Math.cos(angle) * (Math.random() * 0.7 + 0.1),
-              vy: Math.sin(angle) * (Math.random() * 0.7 + 0.1) - (Math.random() * 0.3 + 0.1),
-              radius: Math.random() * 2 + 1,
+              x: Math.random() * width,
+              y: Math.random() * height,
+              // Anti-gravity upward buoyancy (Liftoff trajectory)
+              vx: (Math.random() - 0.5) * 0.6,
+              vy: -(Math.random() * 0.7 + 0.15),
+              radius: Math.random() * 2.2 + 1.2,
               color: colors[Math.floor(Math.random() * colors.length)],
-              opacity: Math.random() * 0.4 + 0.3,
-              life: Math.random() * 150 + 100,
-              originalLife: 250
+              opacity: Math.random() * 0.5 + 0.35,
+              life: Math.random() * 200 + 100,
+              originalLife: 300
             });
           }
         };
@@ -202,7 +379,7 @@
         }, { threshold: 0.05 });
         intersectionObserver.observe(container);
 
-        let mouse = { x: null, y: null, radius: 110 };
+        let mouse = { x: null, y: null, radius: 130 };
 
         const handleMouseMove = (e) => {
           const rect = canvas.getBoundingClientRect();
@@ -226,28 +403,52 @@
 
           ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
+          // Google Antigravity Radial Mesh Backdrop
           const gradient = ctx.createRadialGradient(
-            canvasWidth / 2, canvasHeight / 2, 30,
-            canvasWidth / 2, canvasHeight / 2, canvasWidth / 1.4
+            canvasWidth / 2, canvasHeight / 2, 20,
+            canvasWidth / 2, canvasHeight / 2, canvasWidth / 1.3
           );
           if (isDarkMode) {
-            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.04)');
-            gradient.addColorStop(0.5, 'rgba(100, 100, 100, 0.015)');
+            gradient.addColorStop(0, 'rgba(50, 121, 249, 0.05)');
+            gradient.addColorStop(0.3, 'rgba(0, 185, 92, 0.02)');
+            gradient.addColorStop(0.7, 'rgba(251, 188, 4, 0.01)');
             gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
           } else {
-            gradient.addColorStop(0, 'rgba(30, 30, 30, 0.03)');
+            gradient.addColorStop(0, 'rgba(50, 121, 249, 0.04)');
+            gradient.addColorStop(0.5, 'rgba(0, 185, 92, 0.02)');
             gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
           }
           ctx.fillStyle = gradient;
           ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
+          // Render Antigravity Constellation Lines between nearby particles
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 60) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = isDarkMode 
+                  ? `rgba(50, 121, 249, ${0.12 * (1 - dist / 60)})` 
+                  : `rgba(50, 121, 249, ${0.08 * (1 - dist / 60)})`;
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+              }
+            }
+          }
+
+          // Update & Draw Particles with Anti-Gravity Upward Motion
           for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
 
             p.x += p.vx;
-            p.y += p.vy;
-            p.vx += Math.sin(p.y * 0.02) * 0.005;
+            p.y += p.vy; // Floating upward
+            p.vx += Math.sin(p.y * 0.015) * 0.01;
 
+            // Zero-G Mouse Repulsion and Dispersion
             if (mouse.x !== null && mouse.y !== null) {
               const dx = p.x - mouse.x;
               const dy = p.y - mouse.y;
@@ -255,8 +456,8 @@
               if (dist < mouse.radius) {
                 const force = (mouse.radius - dist) / mouse.radius;
                 const angle = Math.atan2(dy, dx);
-                p.x += Math.cos(angle) * force * 3;
-                p.y += Math.sin(angle) * force * 3;
+                p.x += Math.cos(angle) * force * 3.5;
+                p.y += Math.sin(angle) * force * 3.5;
               }
             }
 
@@ -268,15 +469,14 @@
 
             p.life--;
 
+            // Respawn from bottom or edge when particle escapes off top (continuous liftoff)
             if (p.life <= 0 || p.y < -15 || p.x < -15 || p.x > canvasWidth + 15 || p.y > canvasHeight + 15) {
-              const angle = Math.random() * Math.PI * 2;
-              const dist = Math.random() * 50 + 5;
-              p.x = (canvasWidth / 2) + Math.cos(angle) * dist;
-              p.y = (canvasHeight / 2) + Math.sin(angle) * dist + 30;
-              p.vx = Math.cos(angle) * (Math.random() * 0.5 + 0.1);
-              p.vy = Math.sin(angle) * (Math.random() * 0.5 + 0.1) - (Math.random() * 0.4 + 0.1);
-              p.life = Math.random() * 150 + 100;
-              p.opacity = Math.random() * 0.4 + 0.3;
+              p.x = Math.random() * canvasWidth;
+              p.y = canvasHeight + Math.random() * 20;
+              p.vx = (Math.random() - 0.5) * 0.6;
+              p.vy = -(Math.random() * 0.7 + 0.15);
+              p.life = Math.random() * 200 + 100;
+              p.opacity = Math.random() * 0.5 + 0.35;
             }
           }
 
@@ -302,6 +502,60 @@
       );
     };
 
+    // --- GOOGLE ANTIGRAVITY 3D PERSPECTIVE TILT & SPOTLIGHT CARD ---
+    const AntigravityTiltCard = ({ children, className = "", staggerClass = "" }) => {
+      const cardRef = useRef(null);
+      const [tiltStyle, setTiltStyle] = useState({});
+
+      const handleMouseMove = (e) => {
+        const card = cardRef.current;
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+
+        setTiltStyle({
+          transform: `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px) scale3d(1.012, 1.012, 1.012)`,
+          '--card-spot-x': `${x}px`,
+          '--card-spot-y': `${y}px`,
+          transition: 'transform 0.08s ease-out',
+        });
+      };
+
+      const handleMouseLeave = () => {
+        setTiltStyle({
+          transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)',
+          transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease',
+        });
+      };
+
+      return (
+        <div
+          ref={cardRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={tiltStyle}
+          className={`relative group interactive-layer-card ${staggerClass} ${className}`}
+        >
+          {/* Reactive Google Antigravity Cursor Spotlight Glow on Card Border & Face */}
+          <div 
+            className="pointer-events-none absolute -inset-[1px] rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+            style={{
+              background: `radial-gradient(350px circle at var(--card-spot-x, 50%) var(--card-spot-y, 50%), rgba(50, 121, 249, 0.18), rgba(0, 185, 92, 0.1), transparent 70%)`,
+              borderRadius: 'inherit'
+            }}
+          />
+          <div className="relative z-20 w-full h-full">
+            {children}
+          </div>
+        </div>
+      );
+    };
+
     function App() {
       const [isDarkMode, setIsDarkMode] = useState(() => {
         const saved = localStorage.getItem('amal_theme');
@@ -314,14 +568,25 @@
       const [pingResult, setPingResult] = useState(null);
       const [isPinging, setIsPinging] = useState(false);
 
+      // Global mouse tracking for Antigravity ambient viewport illumination
+      const [globalMouse, setGlobalMouse] = useState({ x: -1000, y: -1000 });
+
+      useEffect(() => {
+        const handleGlobalMouseMove = (e) => {
+          setGlobalMouse({ x: e.clientX, y: e.clientY });
+        };
+        window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
+        return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+      }, []);
+
       useEffect(() => {
         localStorage.setItem('amal_theme', isDarkMode ? 'dark' : 'light');
         if (isDarkMode) {
           document.documentElement.classList.add('dark');
-          document.body.className = "bg-black text-zinc-100 selection:bg-zinc-800 selection:text-white min-h-screen transition-colors duration-300";
+          document.body.className = "bg-[#121317] text-zinc-100 selection:bg-blue-500/30 selection:text-blue-300 min-h-screen transition-colors duration-300 font-sans";
         } else {
           document.documentElement.classList.remove('dark');
-          document.body.className = "bg-slate-50 text-slate-800 selection:bg-slate-200 min-h-screen transition-colors duration-300";
+          document.body.className = "bg-slate-50 text-slate-800 selection:bg-blue-500/20 selection:text-blue-600 min-h-screen transition-colors duration-300 font-sans";
         }
       }, [isDarkMode]);
 
@@ -468,15 +733,36 @@
       };
 
       return (
-        <div className="min-h-screen flex flex-col justify-between bg-slate-50 dark:bg-black text-slate-800 dark:text-zinc-100 transition-colors duration-300">
+        <div className="min-h-screen flex flex-col justify-between bg-slate-50 dark:bg-[#121317] text-slate-800 dark:text-zinc-100 transition-colors duration-300 relative overflow-x-hidden font-sans">
           
+          {/* GOOGLE ANTIGRAVITY SPECTRUM ACCENT LINE */}
+          <div className="h-[3px] w-full bg-gradient-to-r from-[#3279f9] via-[#00b95c] via-[#fbbc04] to-[#fc413d] fixed top-0 left-0 z-50 animate-spectrum-flow"></div>
+
+          {/* AMBIENT CURSOR SPOTLIGHT (VIEWPORT ZERO-G FIELD) */}
+          <div 
+            className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 no-print" 
+            style={{ 
+              background: isDarkMode 
+                ? `radial-gradient(850px circle at ${globalMouse.x}px ${globalMouse.y}px, rgba(50, 121, 249, 0.08), rgba(0, 185, 92, 0.03), transparent 70%)` 
+                : `radial-gradient(850px circle at ${globalMouse.x}px ${globalMouse.y}px, rgba(50, 121, 249, 0.07), rgba(0, 185, 92, 0.02), transparent 70%)` 
+            }} 
+          />
+
           {/* TOP NAVIGATION BAR */}
-          <header className="border-b sticky top-0 z-50 backdrop-blur-xl transition-colors bg-white/90 border-slate-200 dark:bg-black/85 dark:border-zinc-800/80">
+          <header className="border-b sticky top-0 z-40 backdrop-blur-xl transition-colors bg-white/90 border-slate-200 dark:bg-[#121317]/85 dark:border-zinc-800/80 animate-nav-down">
             <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <span className="font-black tracking-tight text-lg text-slate-900 dark:text-white select-none">
-                  Amal V A
-                </span>
+                <div className="flex items-center space-x-2">
+                  <div className="flex space-x-1 items-center">
+                    <span className="w-2 h-2 rounded-full bg-[#3279f9]"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#fc413d]"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#fbbc04]"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#00b95c]"></span>
+                  </div>
+                  <span className="font-black tracking-tight text-lg text-slate-900 dark:text-white select-none">
+                    Amal V A
+                  </span>
+                </div>
                 <span className="hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-zinc-900 border border-slate-300 dark:border-zinc-800 text-slate-700 dark:text-zinc-400">
                   Network Engineer
                 </span>
@@ -485,7 +771,7 @@
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => window.print()}
-                  className="px-3 py-1.5 rounded-lg border text-xs font-mono font-medium transition-colors no-print bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
+                  className="px-3 py-1.5 rounded-lg border text-xs font-mono font-medium transition-all duration-200 hover:-translate-y-0.5 active:scale-95 no-print bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
                   title="Print or Save Resume as PDF"
                 >
                   Print / PDF
@@ -494,7 +780,7 @@
                 <button
                   onClick={() => setIsDarkMode(!isDarkMode)}
                   aria-label="Toggle dark/light theme"
-                  className="p-2 rounded-lg border transition-colors bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-800"
+                  className="p-2 rounded-lg border transition-all duration-300 transform hover:rotate-45 active:scale-90 bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-800"
                   title={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
                 >
                   {isDarkMode ? (
@@ -525,52 +811,137 @@
             </div>
           )}
 
-          {/* CORE HERO SECTION */}
-          <section className="relative w-full overflow-hidden border-b border-slate-200 dark:border-zinc-800/80 bg-white dark:bg-black transition-colors no-print">
+          {/* CORE HERO SECTION (FIRST SHOWING CARD) */}
+          <section className="relative w-full overflow-hidden border-b border-slate-200 dark:border-zinc-800/80 bg-white dark:bg-[#121317] transition-colors no-print">
             
             <AntigravityCanvas isDarkMode={isDarkMode} />
 
+            {/* Ambient Lighting Glow Behind Hero Card */}
+            <div className={`hero-ambient-glow ${isDarkMode ? 'bg-gradient-to-tr from-[#3279f9]/15 via-[#00b95c]/10 to-transparent' : 'bg-gradient-to-tr from-[#3279f9]/10 via-[#00b95c]/10 to-transparent'}`}></div>
+
             {/* Content Overlay */}
             <div className="relative z-10 max-w-4xl mx-auto px-4 pt-16 pb-12 text-center pointer-events-none">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-100/90 dark:bg-zinc-900/90 mb-6 border border-slate-200 dark:border-zinc-800 backdrop-blur-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300">Available For Engineering Placements</span>
+              
+              {/* TOP STATUS PILL (HERO CARD HEADER) */}
+              <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-slate-100/90 dark:bg-zinc-900/90 mb-6 border border-slate-200 dark:border-zinc-800 backdrop-blur-md shadow-sm pointer-events-auto hover:border-blue-500/40 hover:bg-blue-500/5 transition-all duration-300 hero-badge-anim cursor-default">
+                <span className="relative flex h-2 w-2">
+                  <span className="beacon-radar absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#3279f9]"></span>
+                </span>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 font-mono">
+                  Available For Engineering Placements
+                </span>
+                <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                  L1–L3 READY
+                </span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto select-none text-slate-900 dark:text-white">
-                Network Engineer specialized in enterprise routing, switching, and robust hardware infrastructure.
+              {/* MAIN HERO HEADLINE */}
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto select-none text-slate-900 dark:text-white hero-title-anim font-sans">
+                Network Engineer specialized in <span className="bg-gradient-to-r from-[#3279f9] via-[#00b95c] to-[#fbbc04] bg-clip-text text-transparent">enterprise routing</span>, switching, and robust hardware infrastructure.
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-4 max-w-xl mx-auto select-none">
+              
+              {/* SUBTITLE */}
+              <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-4 max-w-xl mx-auto select-none hero-sub-anim leading-relaxed">
                 CCNA & Hardware certified Network Engineer ready to optimize, troubleshoot, and maintain clean enterprise IT infrastructure layouts.
               </p>
 
-              {/* Interactive Search Bar */}
-              <div className="max-w-xl mx-auto mt-8 relative pointer-events-auto">
-                <div className="flex items-center px-4 py-2.5 rounded-full border shadow-sm dark:shadow-lg transition-all bg-white dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus-within:border-slate-500 dark:focus-within:border-zinc-600">
-                  <SearchIcon />
+              {/* INTERACTIVE SEARCH BAR (HERO INTERACTION) */}
+              <div className="max-w-xl mx-auto mt-8 relative pointer-events-auto hero-search-anim">
+                <div className="group flex items-center px-4 py-2.5 rounded-full border shadow-sm dark:shadow-xl transition-all duration-300 bg-white dark:bg-zinc-900/95 border-slate-300 dark:border-zinc-800 hover:border-slate-400 dark:hover:border-zinc-700 focus-within:ring-4 focus-within:ring-emerald-500/15 focus-within:border-emerald-500 dark:focus-within:border-emerald-400">
+                  <div className="text-slate-400 dark:text-zinc-400 group-focus-within:text-emerald-500 transition-colors">
+                    <SearchIcon />
+                  </div>
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search CV competencies (e.g. OSPF, 2921, 3750G, Cabling, CCTV, GNS3...)"
-                    className="ml-3 flex-1 bg-transparent border-none text-xs focus:ring-0 focus:outline-none placeholder-slate-400 dark:placeholder-zinc-500 text-slate-900 dark:text-zinc-100"
+                    className="ml-3 flex-1 bg-transparent border-none text-xs focus:ring-0 focus:outline-none placeholder-slate-400 dark:placeholder-zinc-500 text-slate-900 dark:text-zinc-100 font-medium"
                   />
-                  {searchQuery && (
-                    <button onClick={() => setSearchQuery('')} className="text-xs text-slate-500 hover:text-slate-800 dark:text-zinc-400 dark:hover:text-white font-semibold px-2">Clear</button>
+                  {searchQuery ? (
+                    <button 
+                      onClick={() => setSearchQuery('')} 
+                      className="text-xs text-slate-500 hover:text-slate-800 dark:text-zinc-400 dark:hover:text-white font-semibold px-2 py-0.5 rounded-full hover:bg-slate-100 dark:hover:bg-zinc-800 transition-all"
+                      title="Clear search"
+                    >
+                      Clear
+                    </button>
+                  ) : (
+                    <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-zinc-800 text-slate-400 dark:text-zinc-500 border border-slate-200 dark:border-zinc-700 select-none">
+                      Filter
+                    </span>
                   )}
                 </div>
+
+                {/* QUICK COMPETENCY FILTER CHIPS */}
+                <div className="flex flex-wrap items-center justify-center gap-1.5 mt-3 hero-chips-anim">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mr-1 select-none">
+                    Quick filter:
+                  </span>
+                  {["OSPF", "3750G", "2921", "Cabling", "CCNA", "VLAN"].map((tag) => {
+                    const isActive = searchQuery.toLowerCase() === tag.toLowerCase();
+                    return (
+                      <button
+                        key={tag}
+                        onClick={() => setSearchQuery(isActive ? '' : tag)}
+                        className={`text-[10px] font-mono px-2 py-0.5 rounded-full border transition-all duration-200 ${
+                          isActive
+                            ? 'bg-emerald-500 text-black border-emerald-500 font-bold shadow-sm scale-105'
+                            : 'bg-slate-100/90 hover:bg-slate-200/90 text-slate-600 dark:bg-zinc-900/90 dark:hover:bg-zinc-800 dark:text-zinc-400 border-slate-200 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 hover:scale-105'
+                        }`}
+                      >
+                        {tag}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
+
+              {/* NETWORK TELEMETRY STATUS BAR */}
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8 pt-4 border-t border-slate-200/60 dark:border-zinc-800/60 text-[10px] font-mono text-slate-500 dark:text-zinc-500 hero-chips-anim select-none">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  CCNA: CSCO15297584
+                </span>
+                <span className="hidden sm:inline text-slate-300 dark:text-zinc-700">•</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  ROUTING: OSPF / EIGRP
+                </span>
+                <span className="hidden sm:inline text-slate-300 dark:text-zinc-700">•</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                  CISCO: 2921 / 3750G
+                </span>
+                <span className="hidden sm:inline text-slate-300 dark:text-zinc-700">•</span>
+                <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  LAYER 1-3 VERIFIED
+                </span>
+              </div>
+
             </div>
           </section>
 
           {/* MAIN CV CONTENT GRID */}
-          <main className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1 w-full bg-slate-50 dark:bg-black transition-colors">
+          <main className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1 w-full bg-slate-50 dark:bg-[#121317] transition-colors">
             
             {/* LEFT COLUMN: PROFILE SUMMARY, DETAILED WORK EXPERIENCE, EDUCATION */}
             <div className="lg:col-span-2 space-y-6">
               
-              {/* PROFILE CARD: PERSONAL DETAILS & PROFESSIONAL SUMMARY */}
-              <div className="p-6 rounded-2xl border bg-white dark:bg-zinc-950/70 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+              {/* LAYER 01: PROFILE CARD - PERSONAL DETAILS & PROFESSIONAL SUMMARY */}
+              <AntigravityTiltCard staggerClass="layer-card-1" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+                
+                {/* Telemetry Header */}
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    LAYER // 01 • IDENTITY MATRIX
+                  </span>
+                  <span>NODE: AMAL-VA-01</span>
+                </div>
+
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                   <div>
                     <h1 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">{profileData.name}</h1>
@@ -594,11 +965,11 @@
                     href={profileData.linkedinUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="group p-3 rounded-xl border border-slate-200 dark:border-zinc-800/90 bg-slate-50/80 dark:bg-zinc-900/60 hover:bg-blue-50/60 hover:border-blue-400 dark:hover:bg-zinc-800/80 dark:hover:border-blue-500/50 transition-all duration-200 hover:-translate-y-0.5 shadow-sm flex flex-col justify-between"
+                    className="group p-3 rounded-xl border border-slate-200 dark:border-zinc-800/90 bg-slate-50/80 dark:bg-zinc-900/60 hover:bg-blue-50/60 hover:border-blue-400 dark:hover:bg-zinc-800/80 dark:hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:scale-[1.02] active:scale-95 shadow-sm flex flex-col justify-between"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-zinc-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 flex items-center gap-1.5 transition-colors">
-                        <LinkedInIcon /> LinkedIn
+                        <span className="transform group-hover:scale-110 transition-transform duration-200"><LinkedInIcon /></span> LinkedIn
                       </span>
                       <ExternalArrowIcon />
                     </div>
@@ -612,11 +983,11 @@
                     href={profileData.repoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="group p-3 rounded-xl border border-slate-200 dark:border-zinc-800/90 bg-slate-50/80 dark:bg-zinc-900/60 hover:bg-slate-100 hover:border-slate-400 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-500 transition-all duration-200 hover:-translate-y-0.5 shadow-sm flex flex-col justify-between"
+                    className="group p-3 rounded-xl border border-slate-200 dark:border-zinc-800/90 bg-slate-50/80 dark:bg-zinc-900/60 hover:bg-slate-100 hover:border-slate-400 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:scale-[1.02] active:scale-95 shadow-sm flex flex-col justify-between"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white flex items-center gap-1.5 transition-colors">
-                        <GitHubIcon /> GitHub Repo
+                        <span className="transform group-hover:scale-110 transition-transform duration-200"><GitHubIcon /></span> GitHub Repo
                       </span>
                       <ExternalArrowIcon />
                     </div>
@@ -630,11 +1001,11 @@
                     href={profileData.whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="group p-3 rounded-xl border border-emerald-200 dark:border-emerald-900/40 bg-emerald-50/80 dark:bg-emerald-950/20 hover:bg-emerald-100 dark:hover:bg-emerald-950/40 hover:border-emerald-400 dark:hover:border-emerald-500/60 transition-all duration-200 hover:-translate-y-0.5 shadow-sm flex flex-col justify-between"
+                    className="group p-3 rounded-xl border border-emerald-200 dark:border-emerald-900/40 bg-emerald-50/80 dark:bg-emerald-950/20 hover:bg-emerald-100 dark:hover:bg-emerald-950/40 hover:border-emerald-400 dark:hover:border-emerald-500/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:scale-[1.02] active:scale-95 shadow-sm flex flex-col justify-between"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[10px] uppercase tracking-wider text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
-                        <WhatsAppIcon /> WhatsApp
+                        <span className="transform group-hover:scale-110 transition-transform duration-200"><WhatsAppIcon /></span> WhatsApp
                       </span>
                       <ExternalArrowIcon className="text-emerald-600 dark:text-emerald-500 group-hover:text-emerald-700 dark:group-hover:text-emerald-300" />
                     </div>
@@ -646,11 +1017,11 @@
                   {/* Email Box */}
                   <a
                     href={`mailto:${profileData.email}`}
-                    className="group p-3 rounded-xl border border-slate-200 dark:border-zinc-800/90 bg-slate-50/80 dark:bg-zinc-900/60 hover:bg-slate-100 hover:border-slate-400 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-500 transition-all duration-200 hover:-translate-y-0.5 shadow-sm flex flex-col justify-between"
+                    className="group p-3 rounded-xl border border-slate-200 dark:border-zinc-800/90 bg-slate-50/80 dark:bg-zinc-900/60 hover:bg-slate-100 hover:border-slate-400 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:scale-[1.02] active:scale-95 shadow-sm flex flex-col justify-between"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white flex items-center gap-1.5 transition-colors">
-                        <MailIcon /> Email
+                        <span className="transform group-hover:scale-110 transition-transform duration-200"><MailIcon /></span> Email
                       </span>
                       <ExternalArrowIcon />
                     </div>
@@ -662,11 +1033,11 @@
                   {/* Phone Box */}
                   <a
                     href={`tel:${profileData.phone}`}
-                    className="group p-3 rounded-xl border border-slate-200 dark:border-zinc-800/90 bg-slate-50/80 dark:bg-zinc-900/60 hover:bg-slate-100 hover:border-slate-400 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-500 transition-all duration-200 hover:-translate-y-0.5 shadow-sm flex flex-col justify-between"
+                    className="group p-3 rounded-xl border border-slate-200 dark:border-zinc-800/90 bg-slate-50/80 dark:bg-zinc-900/60 hover:bg-slate-100 hover:border-slate-400 dark:hover:bg-zinc-800/80 dark:hover:border-zinc-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:scale-[1.02] active:scale-95 shadow-sm flex flex-col justify-between"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white flex items-center gap-1.5 transition-colors">
-                        <PhoneIcon /> Phone
+                        <span className="transform group-hover:scale-110 transition-transform duration-200"><PhoneIcon /></span> Phone
                       </span>
                       <ExternalArrowIcon />
                     </div>
@@ -676,10 +1047,20 @@
                   </a>
 
                 </div>
-              </div>
+              </AntigravityTiltCard>
 
-              {/* PROFESSIONAL EXPERIENCE: ETHERLABS & IGATE NETWORKS */}
-              <div className="p-6 rounded-2xl border bg-white dark:bg-zinc-950/70 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+              {/* LAYER 02: PROFESSIONAL EXPERIENCE: ETHERLABS & IGATE NETWORKS */}
+              <AntigravityTiltCard staggerClass="layer-card-2" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+                
+                {/* Telemetry Header */}
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    LAYER // 02 • INFRASTRUCTURE ROLES
+                  </span>
+                  <span>2 ENTERPRISE DEPLOYMENTS</span>
+                </div>
+
                 <div className="flex items-center justify-between mb-5 border-b border-slate-200 dark:border-zinc-800/80 pb-3">
                   <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">Professional Experience</h3>
                   <span className="text-[11px] font-mono text-slate-500 dark:text-zinc-500">2 Enterprise Roles</span>
@@ -707,8 +1088,8 @@
                           return (
                             <li 
                               key={tIdx} 
-                              className={`flex items-start text-xs leading-relaxed transition-opacity duration-300 ${
-                                isMatch ? 'text-slate-700 dark:text-zinc-300 opacity-100' : 'opacity-25'
+                              className={`flex items-start text-xs leading-relaxed transition-all duration-300 ${
+                                isMatch ? 'text-slate-700 dark:text-zinc-300 opacity-100 translate-x-0' : 'opacity-20 -translate-x-1'
                               }`}
                             >
                               <span className="text-slate-900 dark:text-zinc-100 mr-2 font-bold select-none">•</span>
@@ -720,10 +1101,20 @@
                     </div>
                   ))}
                 </div>
-              </div>
+              </AntigravityTiltCard>
 
-              {/* CERTIFICATIONS & EDUCATION (FROM CV) */}
-              <div className="p-6 rounded-2xl border bg-white dark:bg-zinc-950/70 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+              {/* LAYER 03: CERTIFICATIONS & EDUCATION (FROM CV) */}
+              <AntigravityTiltCard staggerClass="layer-card-3" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+                
+                {/* Telemetry Header */}
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                    LAYER // 03 • ACCREDITATION & ACADEMY
+                  </span>
+                  <span>VERIFIED CREDENTIALS</span>
+                </div>
+
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                   Certifications & Education
                 </h3>
@@ -734,7 +1125,7 @@
                     return (
                       <div 
                         key={idx} 
-                        className={`flex items-start space-x-3 transition-opacity duration-300 ${isMatch ? 'opacity-100' : 'opacity-25'}`}
+                        className={`flex items-start space-x-3 transition-all duration-300 ${isMatch ? 'opacity-100' : 'opacity-20'}`}
                       >
                         <div className="mt-1">
                           <span className="w-1.5 h-1.5 rounded-full bg-slate-700 dark:bg-zinc-200 block"></span>
@@ -744,7 +1135,8 @@
                             <div className="flex items-center gap-2 flex-wrap">
                               <h4 className="text-xs font-bold text-slate-900 dark:text-white">{edu.title}</h4>
                               {edu.credentialId && (
-                                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-zinc-900 border border-emerald-300 dark:border-zinc-700 text-emerald-700 dark:text-emerald-400 font-semibold tracking-wider">
+                                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-zinc-900 border border-emerald-300 dark:border-zinc-700 text-emerald-700 dark:text-emerald-400 font-semibold tracking-wider flex items-center gap-1">
+                                  <span className="w-1 h-1 rounded-full bg-emerald-500"></span>
                                   ID: {edu.credentialId}
                                 </span>
                               )}
@@ -757,15 +1149,25 @@
                     );
                   })}
                 </div>
-              </div>
+              </AntigravityTiltCard>
 
             </div>
 
             {/* RIGHT COLUMN: TECHNICAL SKILLS (CATEGORIZED CV MATRIX), DIAGNOSTICS, CONTACT */}
             <div className="space-y-6">
               
-              {/* TECHNICAL SKILL MATRIX: 4 STRUCTURED CATEGORIES FROM CV */}
-              <div className="p-6 rounded-2xl border bg-white dark:bg-zinc-950/70 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+              {/* LAYER 04: TECHNICAL SKILL MATRIX: 4 STRUCTURED CATEGORIES FROM CV */}
+              <AntigravityTiltCard staggerClass="layer-card-4" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+                
+                {/* Telemetry Header */}
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                    LAYER // 04 • PROTOCOL & HARDWARE STACK
+                  </span>
+                  <span>4 STACKS</span>
+                </div>
+
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                   <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400">
                     Technical Skills
@@ -785,10 +1187,12 @@
                           return (
                             <span
                               key={sIdx}
-                              className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-medium border transition-all duration-300 ${
+                              className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-medium border transition-all duration-300 cursor-default ${
                                 isMatch 
-                                  ? 'bg-slate-100 dark:bg-zinc-900 border-slate-300 dark:border-zinc-700 text-slate-800 dark:text-zinc-200 hover:border-slate-500 dark:hover:border-zinc-500' 
-                                  : 'opacity-20'
+                                  ? searchQuery 
+                                    ? 'bg-emerald-500/10 dark:bg-emerald-500/15 border-emerald-500/60 text-emerald-800 dark:text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.2)] font-semibold scale-105'
+                                    : 'bg-slate-100 dark:bg-zinc-900 border-slate-300 dark:border-zinc-700 text-slate-800 dark:text-zinc-200 hover:border-slate-500 dark:hover:border-zinc-500 hover:scale-105' 
+                                  : 'opacity-20 scale-95'
                               }`}
                             >
                               {skill}
@@ -803,10 +1207,20 @@
                 <div className="mt-6 pt-4 border-t border-slate-200 dark:border-zinc-800/80 text-[11px] text-slate-600 dark:text-zinc-400">
                   Languages: <strong className="text-slate-900 dark:text-zinc-200">{languages.join(', ')}</strong>
                 </div>
-              </div>
+              </AntigravityTiltCard>
 
-              {/* DIAGNOSTICS & PING CENTER */}
-              <div className="p-6 rounded-2xl border bg-white dark:bg-zinc-950/70 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+              {/* LAYER 05: DIAGNOSTICS & PING CENTER */}
+              <AntigravityTiltCard staggerClass="layer-card-5" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+                
+                {/* Telemetry Header */}
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    LAYER // 05 • ICMP TELEMETRY GATEWAY
+                  </span>
+                  <span>PORT 80 / ICMP ECHO</span>
+                </div>
+
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                   Network Latency Diagnostics
                 </h3>
@@ -818,24 +1232,34 @@
                 <button
                   onClick={runPingDiag}
                   disabled={isPinging}
-                  className={`w-full py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all border ${
+                  className={`w-full py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-200 border ${
                     isPinging 
                       ? 'bg-slate-100 dark:bg-zinc-900 text-slate-400 dark:text-zinc-500 border-slate-200 dark:border-zinc-800 cursor-not-allowed' 
-                      : 'bg-slate-900 hover:bg-slate-800 text-white border-slate-900 dark:bg-white dark:text-black dark:hover:bg-zinc-200 dark:border-white shadow-sm'
+                      : 'bg-slate-900 hover:bg-slate-800 text-white border-slate-900 dark:bg-white dark:text-black dark:hover:bg-zinc-200 dark:border-white shadow-sm hover:-translate-y-0.5 active:scale-95'
                   }`}
                 >
                   {isPinging ? 'Pinging Node...' : 'Ping amalva.in'}
                 </button>
 
                 {pingResult && (
-                  <pre className="mt-4 p-4 rounded-xl bg-slate-950 text-emerald-400 border border-slate-800 dark:border-zinc-800 font-mono text-[10px] leading-relaxed overflow-x-auto whitespace-pre-wrap max-h-36">
+                  <pre className="mt-4 p-4 rounded-xl bg-slate-950 text-emerald-400 border border-slate-800 dark:border-zinc-800 font-mono text-[10px] leading-relaxed overflow-x-auto whitespace-pre-wrap max-h-36 shadow-inner animate-slide-up">
                     {pingResult}
                   </pre>
                 )}
-              </div>
+              </AntigravityTiltCard>
 
-              {/* CONTACT GATEWAY */}
-              <div className="p-6 rounded-2xl border bg-white dark:bg-zinc-950/70 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+              {/* LAYER 06: CONTACT GATEWAY */}
+              <AntigravityTiltCard staggerClass="layer-card-6" className="p-6 rounded-2xl border bg-white dark:bg-[#121317]/90 border-slate-200 dark:border-zinc-800/80 shadow-sm dark:shadow-xl backdrop-blur-sm transition-colors">
+                
+                {/* Telemetry Header */}
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-4 pb-2 border-b border-slate-100 dark:border-zinc-900 select-none">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                    LAYER // 06 • GATEWAY HANDSHAKE
+                  </span>
+                  <span>TCP 3-WAY SYN / ACK</span>
+                </div>
+
                 <h3 className="font-bold text-sm uppercase tracking-wider text-slate-700 dark:text-zinc-400 mb-4 pb-2 border-b border-slate-200 dark:border-zinc-800/80">
                   Establish Handshake
                 </h3>
@@ -850,7 +1274,7 @@
                         value={formInput.name}
                         onChange={(e) => setFormInput({ ...formInput, name: e.target.value })}
                         placeholder="Enterprise Recruiter"
-                        className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus:border-slate-500 dark:focus:border-zinc-500 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none"
+                        className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:focus:border-emerald-500 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none transition-all duration-200"
                       />
                     </div>
                     <div>
@@ -861,7 +1285,7 @@
                         value={formInput.email}
                         onChange={(e) => setFormInput({ ...formInput, email: e.target.value })}
                         placeholder="recruiter@enterprise.com"
-                        className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus:border-slate-500 dark:focus:border-zinc-500 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none"
+                        className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:focus:border-emerald-500 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none transition-all duration-200"
                       />
                     </div>
                   </div>
@@ -874,13 +1298,13 @@
                       value={formInput.message}
                       onChange={(e) => setFormInput({ ...formInput, message: e.target.value })}
                       placeholder="Discuss network engineering placement, routing/switching projects, or rack setup..."
-                      className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus:border-slate-500 dark:focus:border-zinc-500 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none"
+                      className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 dark:bg-zinc-900/90 border-slate-300 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:focus:border-emerald-500 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none transition-all duration-200"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-black font-bold text-xs uppercase tracking-wider transition-all shadow-sm"
+                    className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-zinc-200 dark:text-black font-bold text-xs uppercase tracking-wider transition-all duration-200 hover:-translate-y-0.5 active:scale-95 shadow-sm hover:shadow-lg"
                   >
                     Transmit Packet Handshake
                   </button>
@@ -895,20 +1319,20 @@
                     href={profileData.whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-2.5 rounded-xl border border-emerald-300 dark:border-emerald-500/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/40 dark:text-emerald-400 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm"
+                    className="w-full py-2.5 rounded-xl border border-emerald-300 dark:border-emerald-500/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/40 dark:text-emerald-400 font-bold text-xs uppercase tracking-wider transition-all duration-200 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     Chat on WhatsApp
                   </a>
                 </form>
-              </div>
+              </AntigravityTiltCard>
 
             </div>
 
           </main>
 
           {/* FOOTER */}
-          <footer className="border-t py-12 mt-12 bg-white dark:bg-black border-slate-200 dark:border-zinc-900 text-slate-600 dark:text-zinc-500 transition-colors">
+          <footer className="border-t py-12 mt-12 bg-white dark:bg-[#121317] border-slate-200 dark:border-zinc-900 text-slate-600 dark:text-zinc-500 transition-colors layer-card-footer">
             <div className="max-w-4xl mx-auto px-4 text-center space-y-3">
               <div className="flex items-center justify-center space-x-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
