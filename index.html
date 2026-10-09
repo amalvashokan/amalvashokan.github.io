@@ -1194,15 +1194,12 @@
                       className="w-full h-full object-contain" 
                     />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white tracking-wide">
-                        Cisco Certified CCNA
-                      </span>
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-cyan-50 text-cyan-700 dark:bg-cyan-950/60 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
-                        Official Badge
-                      </span>
-                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white tracking-wide">
+                          Cisco Certified CCNA
+                        </span>
+                      </div>
                     <div className="flex items-center gap-2 mt-0.5 font-mono text-[11px]">
                       <span className="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -1839,11 +1836,8 @@
                   {/* Step 1: Physical Layer + 2 Photos */}
                   <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
                     <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-                          Layer 1
-                        </span>
-                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 01</span>
+                      <div className="flex items-center justify-end">
+                        <span className="text-[11px] font-mono font-bold text-slate-400 dark:text-zinc-500">Step 01</span>
                       </div>
                       <h6 className="text-xs font-bold text-slate-900 dark:text-white">
                         Physical Layer Diagnostics & Remediation
@@ -1900,11 +1894,8 @@
                   {/* Step 2: Network & Endpoint + 1 Photo */}
                   <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
                     <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
-                          Layer 2 & 3
-                        </span>
-                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 02</span>
+                      <div className="flex items-center justify-end">
+                        <span className="text-[11px] font-mono font-bold text-slate-400 dark:text-zinc-500">Step 02</span>
                       </div>
                       <h6 className="text-xs font-bold text-slate-900 dark:text-white">
                         Network & Endpoint Re-Addressing
@@ -1941,11 +1932,8 @@
                   {/* Step 3: Validation & Stream Restoration + 1 Photo */}
                   <div className="p-4 rounded-xl bg-slate-50/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-zinc-800 flex flex-col justify-between space-y-3">
                     <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                          Application / NVR
-                        </span>
-                        <span className="text-[11px] font-mono text-slate-400 dark:text-zinc-500">Step 03</span>
+                      <div className="flex items-center justify-end">
+                        <span className="text-[11px] font-mono font-bold text-slate-400 dark:text-zinc-500">Step 03</span>
                       </div>
                       <h6 className="text-xs font-bold text-slate-900 dark:text-white">
                         Validation & Stream Restoration
@@ -2237,23 +2225,15 @@
                     )}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-baseline justify-between gap-2 flex-wrap">
-                        <div className="flex items-center gap-2 flex-wrap">
+                        <div>
                           <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{edu.title}</h4>
-                          {edu.credentialId && (
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 font-semibold tracking-wider flex items-center gap-1">
-                              <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse"></span>
-                              ID: {edu.credentialId}
-                            </span>
-                          )}
-                          {edu.badge && (
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300 font-semibold">
-                              Verified Badge
-                            </span>
-                          )}
                         </div>
                         <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-500">{edu.year}</span>
                       </div>
-                      <p className="text-[11px] text-slate-600 dark:text-zinc-400 font-mono mt-0.5">{edu.institution} — <span className="italic">{edu.location}</span></p>
+                      <p className="text-[11px] text-slate-600 dark:text-zinc-400 font-mono mt-0.5">
+                        {edu.institution} — <span className="italic">{edu.location}</span>
+                        {edu.credentialId && <span className="text-emerald-600 dark:text-emerald-400 font-medium"> • ID: {edu.credentialId}</span>}
+                      </p>
                     </div>
                   </div>
                 ))}
