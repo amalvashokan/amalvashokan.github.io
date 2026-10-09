@@ -245,6 +245,22 @@
     .beacon-radar {
       animation: beaconRadar 2.2s infinite ease-out;
     }
+
+    /* MODAL ANIMATIONS */
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes modalScaleUp {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-backdrop-anim {
+      animation: modalFadeIn 0.2s ease-out forwards;
+    }
+    .modal-card-anim {
+      animation: modalScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-[#121317] dark:text-zinc-100 selection:bg-blue-500/20 selection:text-blue-500 dark:selection:bg-blue-500/30 dark:selection:text-blue-300 min-h-screen transition-colors duration-300">
@@ -558,6 +574,7 @@
       const [searchQuery, setSearchQuery] = useState('');
       
       const [toast, setToast] = useState(null);
+      const [showCcnaModal, setShowCcnaModal] = useState(false);
       const [formInput, setFormInput] = useState({ name: '', email: '', message: '' });
       const [pingResult, setPingResult] = useState(null);
       const [isPinging, setIsPinging] = useState(false);
@@ -667,6 +684,7 @@
           location: "Thrissur, Kerala",
           year: "2025",
           credentialId: "CSCO15297584",
+          badge: "ccna-badge.png",
           type: "Certification"
         },
         {
@@ -846,6 +864,81 @@
             </div>
           )}
 
+          {/* CCNA BADGE INSPECTION MODAL */}
+          {showCcnaModal && (
+            <div 
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm modal-backdrop-anim no-print"
+              onClick={() => setShowCcnaModal(false)}
+            >
+              <div 
+                className="relative max-w-sm sm:max-w-md w-full bg-white dark:bg-[#18191e] border border-slate-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-2xl text-center space-y-5 modal-card-anim"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <button 
+                  onClick={() => setShowCcnaModal(false)}
+                  className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-slate-600 dark:text-zinc-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+                  aria-label="Close modal"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                </button>
+
+                {/* Badge Image Frame */}
+                <div className="w-36 h-36 sm:w-44 sm:h-44 mx-auto p-4 bg-white rounded-2xl shadow-inner border border-slate-200/80 flex items-center justify-center">
+                  <img 
+                    src="ccna-badge.png" 
+                    alt="Cisco Certified Network Associate (CCNA)" 
+                    className="w-full h-full object-contain" 
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-50 dark:bg-cyan-950/70 border border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+                    Official Digital Credential
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+                    Cisco Certified Network Associate
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-zinc-400 font-mono">
+                    Issued by Cisco Systems • Etherlabs Lab Track
+                  </p>
+                </div>
+
+                {/* Credential Data Grid */}
+                <div className="bg-slate-50 dark:bg-zinc-900/80 rounded-xl p-3.5 border border-slate-200 dark:border-zinc-800 text-left text-xs font-mono space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500 dark:text-zinc-400">Earner:</span>
+                    <span className="font-bold text-slate-800 dark:text-zinc-200">Amal V A</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500 dark:text-zinc-400">Cisco ID:</span>
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">CSCO15297584</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500 dark:text-zinc-400">Status:</span>
+                    <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-semibold text-[11px]">Active / Verified</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500 dark:text-zinc-400">Core Scope:</span>
+                    <span className="text-slate-700 dark:text-zinc-300">Routing, Switching & Infrastructure</span>
+                  </div>
+                </div>
+
+                <div className="pt-1">
+                  <button
+                    onClick={() => setShowCcnaModal(false)}
+                    className="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity"
+                  >
+                    Done
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* CORE HERO SECTION (FIRST SHOWING CARD) */}
           <section className="relative w-full overflow-hidden border-b border-slate-200 dark:border-zinc-800/80 bg-white dark:bg-[#121317] transition-colors no-print">
             
@@ -874,9 +967,44 @@
               </h1>
 
               {/* DESIGNATION */}
-              <p className="text-lg sm:text-2xl font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-5 select-none hero-sub-anim font-mono">
+              <p className="text-lg sm:text-2xl font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-4 select-none hero-sub-anim font-mono">
                 Network Engineer
               </p>
+
+              {/* CCNA OFFICIAL BADGE DISPLAY */}
+              <div className="flex items-center justify-center mb-6 pointer-events-auto hero-chips-anim">
+                <button
+                  type="button"
+                  onClick={() => setShowCcnaModal(true)}
+                  className="group inline-flex items-center gap-3.5 px-4 py-2 rounded-2xl bg-white/95 dark:bg-zinc-900/90 border border-slate-200/90 dark:border-zinc-800 shadow-md hover:shadow-xl hover:border-cyan-500/50 dark:hover:border-cyan-400/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
+                  title="Click to inspect verified Cisco CCNA credential"
+                >
+                  <div className="relative w-12 h-12 flex-shrink-0 p-1 bg-white rounded-xl shadow-inner border border-slate-100 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <img 
+                      src="ccna-badge.png" 
+                      alt="Cisco Certified Network Associate (CCNA) Badge" 
+                      className="w-full h-full object-contain" 
+                    />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white tracking-wide">
+                        Cisco Certified CCNA
+                      </span>
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-cyan-50 text-cyan-700 dark:bg-cyan-950/60 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
+                        Official Badge
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-0.5 font-mono text-[11px]">
+                      <span className="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        ID: CSCO15297584
+                      </span>
+                      <span className="text-slate-400 dark:text-zinc-500 hidden sm:inline">• View Credential</span>
+                    </div>
+                  </div>
+                </button>
+              </div>
 
               {/* MAIN HERO HEADLINE */}
               <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto select-none text-slate-800 dark:text-zinc-200 hero-sub-anim font-sans">
@@ -1000,19 +1128,39 @@
                 {educationData.map((edu, idx) => (
                   <div 
                     key={idx} 
-                    className="flex items-start space-x-3"
+                    onClick={edu.badge ? () => setShowCcnaModal(true) : undefined}
+                    className={`flex items-start space-x-3.5 p-3 sm:p-4 rounded-xl transition-all duration-200 ${
+                      edu.badge 
+                        ? 'bg-slate-50/80 dark:bg-zinc-900/60 border border-slate-200/90 dark:border-zinc-800 cursor-pointer hover:border-cyan-500/50 hover:shadow-md' 
+                        : 'border border-transparent'
+                    }`}
                   >
-                    <div className="mt-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-700 dark:bg-zinc-200 block"></span>
-                    </div>
-                    <div className="flex-1">
+                    {edu.badge ? (
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 p-1.5 bg-white rounded-xl shadow-sm border border-slate-200 dark:border-zinc-700 flex items-center justify-center hover:scale-105 transition-transform">
+                        <img 
+                          src={edu.badge} 
+                          alt={`${edu.title} Badge`} 
+                          className="w-full h-full object-contain" 
+                        />
+                      </div>
+                    ) : (
+                      <div className="mt-2">
+                        <span className="w-2 h-2 rounded-full bg-slate-700 dark:bg-zinc-200 block"></span>
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
                       <div className="flex items-baseline justify-between gap-2 flex-wrap">
                         <div className="flex items-center gap-2 flex-wrap">
                           <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{edu.title}</h4>
                           {edu.credentialId && (
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-zinc-900 border border-emerald-300 dark:border-zinc-700 text-emerald-700 dark:text-emerald-400 font-semibold tracking-wider flex items-center gap-1">
-                              <span className="w-1 h-1 rounded-full bg-emerald-500"></span>
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 font-semibold tracking-wider flex items-center gap-1">
+                              <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse"></span>
                               ID: {edu.credentialId}
+                            </span>
+                          )}
+                          {edu.badge && (
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300 font-semibold">
+                              Verified Badge
                             </span>
                           )}
                         </div>
